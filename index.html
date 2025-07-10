@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Módulos BRAVAS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="shortcut icon"
+        href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbFjhYAK53K3U5xd3GzeUDVnCykDx8DfjsEg&s"
+        type="image/x-icon">
+</head>
+
+<body class="custom-body">
+
+    <div id="carouselPerguntas" class="carousel slide" data-bs-interval="false">
+
+        <!-- Botões indicadores de posição do carrossel -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselPerguntas" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselPerguntas" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselPerguntas" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselPerguntas" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselPerguntas" data-bs-slide-to="4"
+                aria-label="Slide 5"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+            <!-- Slide 1 - Quantidade de acessos -->
+            <div class="carousel-item active">
+                <div class="custom-style container vh-100 d-flex align-items-center justify-content-center">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <span class="card-text">Calculadora de Módulos - BRAVAS</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">Quantos acessos totais você quer controlar?</h5>
+                            <input type="number" min="1" placeholder="Ex.: 10"
+                                class="custom-input form-control w-50 mx-auto">
+                        </div>
+                        <div class="card-footer d-flex justify-content-evenly">
+                            <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
+                                data-bs-slide="next">Próximo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 - Tipo de comunicação -->
+            <div class="carousel-item">
+                <div class="custom-style container vh-100 d-flex align-items-center justify-content-center">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <span class="card-text">Calculadora de Módulos - BRAVAS</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">Qual tipo de comunicação?</h5>
+                            <div class="d-flex flex-column align-items-start px-4">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="rd_Comunicacao" id="rd_IP"
+                                        value="tcp">
+                                    <label class="form-check-label" for="rd_IP">
+                                        TCP/IP
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="rd_Comunicacao" id="rd_485"
+                                        value="serial">
+                                    <label class="form-check-label" for="rd_485">RS-485</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-evenly">
+                            <button type="button" class="btn btn-warning" data-bs-target="#carouselPerguntas"
+                                data-bs-slide="prev">Anterior</button>
+                            <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
+                                data-bs-slide="next">Próximo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 - Acesso Veicular -->
+            <div class="carousel-item">
+                <div class="custom-style container vh-100 d-flex align-items-center justify-content-center">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <span class="card-text">Calculadora de Módulos - BRAVAS</span>
+                        </div>
+                        <div class="card-body">
+
+                            <h5 class="card-title mb-3">Haverá controle de algum acesso veicular?</h5>
+                            <div class="d-flex flex-column align-items-start px-4">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="rd_checkAcessoVeicular"
+                                        id="rd_acessoVeicularSim" value="true">
+                                    <label class="form-check-label" for="rd_acessoVeicularSim">
+                                        Sim
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="rd_checkAcessoVeicular"
+                                        id="rd_acessoVeicularNao" value="false">
+                                    <label class="form-check-label" for="rd_acessoVeicularNao">Não</label>
+                                </div>
+                            </div>
+
+                            <div id="qtdAcessosVeiculares" class="d-none">
+                                <h5 class="card-title mt-4 mb-3">Quantos acessos veiculares totais?</h5>
+                                <input type="number" min="1" placeholder="Ex.: 4"
+                                    class="custom-input form-control w-50 mx-auto">
+
+                                <h5 class="card-title my-3"> Algum desses acessos será acionado via controle remoto?
+                                </h5>
+                                <div class="d-flex flex-column align-items-start px-4">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="rd_checkControleRemoto"
+                                            id="rd_controleRemotoSim" value="true">
+                                        <label class="form-check-label" for="rd_controleRemoto">
+                                            Sim
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="rd_checkControleRemoto"
+                                            id="rd_controleRemotoNao" value="false">
+                                        <label class="form-check-label" for="rd_controleRemoto"> Não </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="qtdAcessosVeicularesRF" class="d-none">
+                                <h5 class="card-title my-3">Quantos?</h5>
+                                <input type="number" min="1" placeholder="Ex.: 2"
+                                    class="custom-input form-control w-50 mx-auto">
+                            </div>
+                        </div>
+
+                        <div class="card-footer d-flex justify-content-evenly">
+                            <button type="button" class="btn btn-warning" data-bs-target="#carouselPerguntas"
+                                data-bs-slide="prev">Anterior</button>
+                            <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
+                                data-bs-slide="next">Próximo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 - Acesso Catraca -->
+            <div class="carousel-item">
+                <div class="custom-style container vh-100 d-flex align-items-center justify-content-center">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <span class="card-text">Calculadora de Módulos - BRAVAS</span>
+                        </div>
+                        <div class="card-body">
+
+                            <h5 class="card-title mb-3">Haverá controle de catracas e/ou torniquetes?</h5>
+                            <div class="d-flex flex-column align-items-start px-4">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="rd_checkCatraca"
+                                        id="rd_catracaSim" value="true">
+                                    <label class="form-check-label" for="rd_catracaSim">
+                                        Sim
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="rd_checkCatraca"
+                                        id="rd_catracaNao" value="false">
+                                    <label class="form-check-label" for="rd_catracaNao">Não</label>
+                                </div>
+                            </div>
+
+                            <div id="qtdCatraca" class="d-none">
+                                <h5 class="card-title my-3">Quantos totais?</h5>
+                                <input type="number" min="1" placeholder="Ex.: 2"
+                                    class="custom-input form-control w-50 mx-auto">
+                            </div>
+                        </div>
+
+                        <div class="card-footer d-flex justify-content-evenly">
+                            <button type="button" class="btn btn-warning" data-bs-target="#carouselPerguntas"
+                                data-bs-slide="prev">Anterior</button>
+                            <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
+                                data-bs-slide="next">Próximo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5 - Automações -->
+            <div class="carousel-item">
+                <div class="custom-style container vh-100 d-flex align-items-center justify-content-center">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <span class="card-text">Calculadora de Módulos - BRAVAS</span>
+                        </div>
+                        <div class="card-body">
+
+                            <h5 class="card-title mb-3">Pretende fazer alguma automação?</h5>
+                            <div class="d-flex flex-column align-items-start px-4">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="rd_checkAutomacao"
+                                        id="rd_automacaoSim" value="true">
+                                    <label class="form-check-label" for="rd_automacaoSim">
+                                        Sim
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="rd_checkAutomacao"
+                                        id="rd_automacaoNao" value="false">
+                                    <label class="form-check-label" for="rd_automacaoNao">Não</label>
+                                </div>
+                            </div>
+
+                            <div id="quaisAutomacoes" class="d-none">
+                                <h5 class="card-title my-3">Quais?</h5>
+                                <div id="automacao"
+                                    class="form-check form-switch d-flex flex-column align-items-start px-4">
+
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="elevador">
+                                        <label class="form-check-label" for="elevador">Elevadores
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="antiCarona">
+                                        <label class="form-check-label" for="AntiCarona">AntiCarona
+                                        </label>
+                                    </div>
+
+
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="controleVaga">
+                                        <label class="form-check-label" for="controleVaga"> Controle de Vaga
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer d-flex justify-content-evenly">
+                            <button type="button" class="btn btn-warning" data-bs-target="#carouselPerguntas"
+                                data-bs-slide="prev">Anterior</button>
+                            <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
+                                data-bs-slide="next">Próximo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Bootstrap bundle (com JS do carrossel) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+
+    <!-- A calculadora -->
+    <script src="./app.js"></script>
+
+    <!-- Controle de estado da página -->
+    <script src="./controller.js"></script>
+
+</body>
+
+</html>

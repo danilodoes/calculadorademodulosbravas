@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.custom-body{
+    background-color: #0C86C6;
+}
+
+.custom-input {
+    text-align: center;
+}
