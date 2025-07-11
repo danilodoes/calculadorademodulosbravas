@@ -29,6 +29,8 @@
                 aria-label="Slide 4"></button>
             <button type="button" data-bs-target="#carouselPerguntas" data-bs-slide-to="4"
                 aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carouselPerguntas" data-bs-slide-to="5"
+                aria-label="Slide 6"></button>
         </div>
 
         <div class="carousel-inner">
@@ -43,7 +45,7 @@
                         <div class="card-body">
                             <h5 class="card-title mb-4">Quantos acessos totais você quer controlar?</h5>
                             <input type="number" min="1" placeholder="Ex.: 10"
-                                class="custom-input form-control w-50 mx-auto">
+                                class="tfAcessosTotais custom-input form-control w-50 mx-auto">
                         </div>
                         <div class="card-footer d-flex justify-content-evenly">
                             <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
@@ -115,7 +117,7 @@
                             <div id="qtdAcessosVeiculares" class="d-none">
                                 <h5 class="card-title mt-4 mb-3">Quantos acessos veiculares totais?</h5>
                                 <input type="number" min="1" placeholder="Ex.: 4"
-                                    class="custom-input form-control w-50 mx-auto">
+                                    class="tfAcessosVeicularesTotais custom-input form-control w-50 mx-auto">
 
                                 <h5 class="card-title my-3"> Algum desses acessos será acionado via controle remoto?
                                 </h5>
@@ -138,7 +140,7 @@
                             <div id="qtdAcessosVeicularesRF" class="d-none">
                                 <h5 class="card-title my-3">Quantos?</h5>
                                 <input type="number" min="1" placeholder="Ex.: 2"
-                                    class="custom-input form-control w-50 mx-auto">
+                                    class="tfAcessosVeicularesRF custom-input form-control w-50 mx-auto">
                             </div>
                         </div>
 
@@ -178,9 +180,9 @@
                             </div>
 
                             <div id="qtdCatraca" class="d-none">
-                                <h5 class="card-title my-3">Quantos totais?</h5>
+                                <h5 class="card-title my-3">Quantos?</h5>
                                 <input type="number" min="1" placeholder="Ex.: 2"
-                                    class="custom-input form-control w-50 mx-auto">
+                                    class="tfAcessosCatraca custom-input form-control w-50 mx-auto">
                             </div>
                         </div>
 
@@ -220,27 +222,55 @@
                             </div>
 
                             <div id="quaisAutomacoes" class="d-none">
-                                <h5 class="card-title my-3">Quais?</h5>
+                                <h5 class="card-title mb-2">Quais?</h5>
                                 <div id="automacao"
                                     class="form-check form-switch d-flex flex-column align-items-start px-4">
 
-                                    <div class="form-check form-switch">
+                                    <!-- Elevadores -->
+                                    <div class="form-check form-switch mb-2">
                                         <input class="form-check-input" type="checkbox" role="switch" id="elevador">
                                         <label class="form-check-label" for="elevador">Elevadores
                                         </label>
                                     </div>
 
-                                    <div class="form-check form-switch">
+                                    <div class="containerElevadores mb-3 align-self-center d-none">
+                                        <h6 class="card-title my-2">Quantos elevadores?</h6>
+                                        <input type="number" min="1" placeholder="Ex.: 5"
+                                            class="tfQtdElevadores custom-input form-control w-50 mx-auto">
+
+                                        <h6 class="card-title my-2">Quantos andares em cada elevador?</h6>
+                                        <input type="number" min="1" placeholder="Ex.: 18"
+                                            class="tfQtdAndares custom-input form-control w-50 mx-auto">
+                                    </div>
+
+                                    <!-- Anti-Caronas -->
+                                    <div class="form-check form-switch mb-2">
                                         <input class="form-check-input" type="checkbox" role="switch" id="antiCarona">
-                                        <label class="form-check-label" for="AntiCarona">AntiCarona
+                                        <label class="form-check-label" for="AntiCarona">Anti-Carona
                                         </label>
                                     </div>
 
+                                    <div class="containerAntiCarona mb-3 align-self-center d-none">
+                                        <h6 class="card-title my-2">Quantos portões?</h6>
+                                        <input type="number" min="1" placeholder="Ex.: 2"
+                                            class="tfQtdAcessosAntiCarona custom-input form-control w-50 mx-auto">
+                                    </div>
 
-                                    <div class="form-check form-switch">
+                                    <!-- Controle de Vagas -->
+                                    <div class="form-check form-switch mb-2">
                                         <input class="form-check-input" type="checkbox" role="switch" id="controleVaga">
-                                        <label class="form-check-label" for="controleVaga"> Controle de Vaga
+                                        <label class="form-check-label" for="controleVaga"> Controle de Vagas
                                         </label>
+                                    </div>
+
+                                    <div class="containerControleVagas align-self-center d-none">
+                                        <h6 class="card-title mt-2">Quantos acessos de entrada?</h6>
+                                        <input type="number" min="1" placeholder="Ex.: 1"
+                                            class="tfQtdControleVagasEntrada custom-input form-control w-50 mx-auto">
+
+                                        <h6 class="card-title mt-1">Quantos acessos de saída?</h6>
+                                        <input type="number" min="1" placeholder="Ex.: 1"
+                                            class="tfQtdControleVagasSaida custom-input form-control w-50 mx-auto">
                                     </div>
                                 </div>
                             </div>
@@ -255,9 +285,31 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Slide 6 - Finalização -->
+            <div class="carousel-item">
+                <div class="custom-style container vh-100 d-flex align-items-center justify-content-center">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <span class="card-text">Calculadora de Módulos - BRAVAS</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><span class="fw-bold">Aviso Importante:</span>
+                                Esta ferramenta encontra-se em fase de desenvolvimento. Embora os módulos apresentados
+                                sejam uma referência útil, recomendamos a validação do seu projeto com nossa equipe de
+                                suporte para garantir a melhor adequação às suas necessidades.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-evenly">
+                            <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
+                                data-bs-slide="prev">Voltar</button>
+                            <button type="button" class="btn btn-primary calcular" data-bs-target="#carouselPerguntas"
+                                data-bs-slide="prev">Calcular</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-
-
     </div>
 
     <!-- Bootstrap bundle (com JS do carrossel) -->
@@ -269,7 +321,6 @@
 
     <!-- Controle de estado da página -->
     <script src="./controller.js"></script>
-
 </body>
 
 </html>
