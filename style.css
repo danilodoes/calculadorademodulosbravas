@@ -10,3 +10,9 @@
 .custom-input {
     text-align: center;
 }
+
+@media (min-width: 576px) {
+  .custom-card {
+    max-width: 400px;
+  }
+}
