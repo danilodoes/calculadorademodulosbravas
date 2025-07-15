@@ -1,4 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
+  //Modal
+
+  const modalBody = document.querySelector(".modulosTotais");
+  const respostasUsuario = document.querySelector(".respotasUsuario");
+  const btnFecharModal = document.querySelector(".btnFecharModal");
+  const modulosContabilizados = [];
+
+  function addParagrafoComResposta(resposta) {
+    const paragrafo = document.createElement("p");
+    paragrafo.textContent = resposta;
+    respostasUsuario.appendChild(paragrafo);
+  }
+
+
+  function addParagrafoComModulo(moduloTexto) {
+    const paragrafo = document.createElement("p");
+    paragrafo.textContent = moduloTexto;
+    modalBody.appendChild(paragrafo);
+  }
+
+
   //Quantidade de Módulos
   let humModAcesso = 4;
   let qtdModAcesso = 0; let qtdMod2x10 = 0;
@@ -19,6 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
     qtdModCatraca = 0; qtdModCatracaIP = 0;
   };
 
+  btnFecharModal.addEventListener("click", () => {
+    modalBody.innerHTML = "";
+    resetarVariaveis();
+  });
 
 
   // Botão Calcular
@@ -57,65 +82,101 @@ document.addEventListener("DOMContentLoaded", function () {
     if (tipoComunicacao === "tcp") {
       //Quantidade de Módutos Porta IP
       if (qtdModPortaIP > 0) {
-        console.log(`${qtdModPortaIP} UN - Módulo Porta IP (PRD0008)`);
+        const texto = `${qtdModPortaIP} un - Módulo Porta IP (PRD0008)`;
+        modulosContabilizados.push(texto)
+        addParagrafoComModulo(texto);
+
       };
 
       //Quantidade de Módulos Catraca IP
       if (qtdModCatracaIP > 0) {
-        console.log(`${qtdModCatracaIP} UN - Módulo Catraca IP (PRD0016)`);
+        const texto = `${qtdModCatracaIP} un - Módulo Catraca IP (PRD0016)`;
+        modulosContabilizados.push(texto);
+        addParagrafoComModulo(texto);
+
       };
 
       //Quantidade de Módulos RF IP
       if (acessosVeicularesRF > 0 && acessosVeicularesRF <= 4) {
         qtdModRFIP = 1;
-        console.log(`${qtdModRFIP} UN - Módulo RF IP (PRD0009)`);
+
       } else if (acessosVeicularesRF >= 5 && acessosVeicularesRF <= 8) {
         qtdModRFIP = 2;
-        console.log(`${qtdModRFIP} UN - Módulo RF IP (PRD0009)`);
+
+      };
+      if (qtdModRFIP > 0) {
+        const texto = `${qtdModRFIP} un - Módulo RF IP (PRD0009)`;
+        modulosContabilizados.push(texto);
+        addParagrafoComModulo(texto);
       };
 
       //Automações: Elevadores
-      if (vaiTerAutomacao) {
+      if (automacaoElevadores) {
         qtdMod4x4IP = Math.ceil(qtdAndares / 4) * (qtdElevadores);
-        qtdModAcesso += Math.ceil(qtdMod4x4IP / 40);
-        console.log(`${qtdMod4x4IP} UN - Módulo PGM 4x4 IP (PRD0013)`);
+
+        if (Math.ceil(qtdMod4x4IP / 40) > 1 && qtdModAcesso === 0) {
+          qtdModAcesso += Math.ceil(qtdMod4x4IP / 40);
+        }
       };
 
       //Automações: Anti-Carona
       if (automacaoAntiCarona) {
-      }
+      };
 
       //Automações: Controle de Vagas
       if (automacaoControleVagas) {
+      };
+
+      //Quantidade de Módulos PGM 4x4 IP
+      if (qtdMod4x4IP > 0) {
+        const texto = `${qtdMod4x4IP} un - Módulo PGM 4x4 IP (PRD0013)`;
+        modulosContabilizados.push(texto);
+        addParagrafoComModulo(texto);
       }
 
+      //Quantidade de Módulos Acesso Programável
+      if (qtdModAcesso === 0) {
+        ++qtdModAcesso
+        addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
+      };
 
-      console.log(`${qtdModAcesso} UN - Módulo Acesso Programável (PRD0028)`);
 
       /////////////// SERIAL 485 /////////////// SERIAL 485 /////////////// SERIAL 485
     } else if (tipoComunicacao === "serial") {
       //Quantidade de Módulos Porta RS-485
       if (qtdModPorta > 0) {
-        console.log(`${qtdModPorta} UN - Módulo Porta RS-485 (PRD0011)`);
+        const texto = `${qtdModPorta} un - Módulo Porta RS-485 (PRD0011)`;
+        modulosContabilizados.push(texto)
+        addParagrafoComModulo(texto);
       };
 
       //Quantidade de Módulos Catraca RS-485
       if (qtdModCatraca > 0) {
-        console.log(`${qtdModCatraca} UN - Módulo Catraca RS-485 (PRD0010)`);
+        const texto = `${qtdModCatraca} un - Módulo Catraca RS-485 (PRD0010)`;
+        modulosContabilizados.push(texto)
+        addParagrafoComModulo(texto);
       };
 
       //Quantidade de Módulos RF RS-485
       if (acessosVeicularesRF > 0 && acessosVeicularesRF <= 4) {
         qtdModRF = 1;
-        console.log(`${qtdModRF} UN - Módulo RF RS-485 (PRD0018)`);
+
       } else if (acessosVeicularesRF >= 5 && acessosVeicularesRF <= 8) {
         qtdModRF = 2;
-        console.log(`${qtdModRF} UN - Módulo RF RS-485 (PRD0018)`);
+
       };
 
-      //Automações: Elevadores
-      if (vaiTerAutomacao) {
-        qtdModAcesso += qtdElevadores;
+      if (qtdModRF > 0) {
+        const texto = `${qtdModRF} un - Módulo RF RS-485 (PRD0018)`;
+        modulosContabilizados.push(texto);
+        addParagrafoComModulo(texto);
+      };
+
+      //Automações: Elevadores RS-485
+      if (automacaoElevadores) {
+    
+        qtdModAcesso += Number(qtdElevadores);
+       
         qtdMod2x10 = Math.floor(qtdAndares / 10) * (qtdElevadores);
 
         if (qtdAndares % 10 >= 1 && qtdAndares % 10 <= 4) {
@@ -128,28 +189,43 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           qtdMod4x4 = 0;
         };
+
         if (qtdMod4x4 != 0) {
 
-          console.log(`${qtdMod4x4} UN - Módulo PGM 4x4 RS-485 (PRD0014)`);
+          const texto = `${qtdMod4x4} un - Módulo PGM 4x4 RS-485 (PRD0014)`;
+          modulosContabilizados.push(texto);
+          addParagrafoComModulo(texto);
+          console.log(`Quatidade de modulo acesso: ${qtdModAcesso}`);
         };
 
-        console.log(`${qtdMod2x10} UN - Módulo PGM 2x10 RS-485 (PRD0063)`);
+        const texto = `${qtdMod2x10} un - Módulo PGM 2x10 RS-485 (PRD0063)`;
+        modulosContabilizados.push(texto);
+        addParagrafoComModulo(texto);
 
+        console.log(`Quatidade de modulo acesso: ${qtdModAcesso}`);
 
       };
 
-      //Automações: Anti-Carona
+      //Automações: Anti-Carona RS-485
       if (automacaoAntiCarona) {
-      }
+      };
 
-      //Automações: Controle de Vagas
+      //Automações: Controle de Vagas RS-485
       if (automacaoControleVagas) {
+      };
+
+      //Quantidade de Módulos Acesso Programável
+      if (qtdModAcesso === 0) {
+        ++qtdModAcesso;
+        addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
+      } else {
+        qtdModAcesso += qtdModAcesso;
+        addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
+      };
+
+      if (vaiTerAutomacao) {
+
       }
-
-      console.log(`${qtdModAcesso} UN - Módulo Acesso Programável (PRD0028)`);
-
-
-
     };
 
 
@@ -157,26 +233,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
-
-    console.log(`Quantidade de acessos totais: ${acessosTotais}`);
-    console.log(`Tipo de comunicação: ${tipoComunicacao}`);
-    console.log(`Haverá acessos veiculares? ${vaiTerAcessoVeicular}`);
-    console.log(`Quantidade de acessos veiculares totais: ${acessosVeicularesTotais}`);
-    console.log(`Haverá acessos veiculares RF? ${vaiTerAcessoVeicularRF}`);
-    console.log(`Acessos veiculares RF: ${acessosVeicularesRF}`);
-    console.log(`Haverá acessos por catracas? ${vaiTerCatraca}`);
-    console.log(`Quantidade de acessos por catraca: ${acessosCatraca}`);
-    console.log(`Haverá automações? ${vaiTerAutomacao}`);
-    console.log(`Haverá automação de elevadores? ${automacaoElevadores}`);
-    console.log(`Quantidade de elevadores: ${qtdElevadores}`);
-    console.log(`Quantidade de andares: ${qtdAndares}`);
-    console.log(`Haverá automação de anti-carona? ${automacaoAntiCarona}`);
-    console.log(`Quantidade de acessos anti-caronas: ${qtdAcessosAntiCarona}`);
-    console.log(`Haverá automação de controle de cagas? ${automacaoControleVagas}`);
-    console.log(`Quantidade de acessos controle de vagas entrada: ${qtdControleVagasEntrada}`);
-    console.log(`Quantidade de acessos controle de vagas saída: ${qtdControleVagasSaida}`);
+    addParagrafoComResposta(`Quantidade de acessos totais: ${acessosTotais}`);
+    addParagrafoComResposta(`Tipo de comunicação: ${tipoComunicacao}`);
+    addParagrafoComResposta(`Haverá acessos veiculares? ${vaiTerAcessoVeicular}`);
+    addParagrafoComResposta(`Quantidade de acessos veiculares totais: ${acessosVeicularesTotais}`);
+    addParagrafoComResposta(`Haverá acessos veiculares RF? ${vaiTerAcessoVeicularRF}`);
+    addParagrafoComResposta(`Acessos veiculares RF: ${acessosVeicularesRF}`);
+    addParagrafoComResposta(`Haverá acessos por catracas? ${vaiTerCatraca}`);
+    addParagrafoComResposta(`Quantidade de acessos por catraca: ${acessosCatraca}`);
+    addParagrafoComResposta(`Haverá automações? ${vaiTerAutomacao}`);
+    addParagrafoComResposta(`Haverá automação de elevadores? ${automacaoElevadores}`);
+    addParagrafoComResposta(`Quantidade de elevadores: ${qtdElevadores}`);
+    addParagrafoComResposta(`Quantidade de andares: ${qtdAndares}`);
+    addParagrafoComResposta(`Haverá automação de anti-carona? ${automacaoAntiCarona}`);
+    addParagrafoComResposta(`Quantidade de acessos anti-caronas: ${qtdAcessosAntiCarona}`);
+    addParagrafoComResposta(`Haverá automação de controle de cagas? ${automacaoControleVagas}`);
+    addParagrafoComResposta(`Quantidade de acessos controle de vagas entrada: ${qtdControleVagasEntrada}`);
+    addParagrafoComResposta(`Quantidade de acessos controle de vagas saída: ${qtdControleVagasSaida}`);
 
     resetarVariaveis();
 

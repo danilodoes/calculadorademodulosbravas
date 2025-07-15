@@ -81,7 +81,7 @@
                         </div>
                         <div class="card-footer d-flex justify-content-evenly">
                             <button type="button" class="btn btn-warning" data-bs-target="#carouselPerguntas"
-                                data-bs-slide="prev">Anterior</button>
+                                data-bs-slide="prev">Voltar</button>
                             <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
                                 data-bs-slide="next">Próximo</button>
                         </div>
@@ -146,7 +146,7 @@
 
                         <div class="card-footer d-flex justify-content-evenly">
                             <button type="button" class="btn btn-warning" data-bs-target="#carouselPerguntas"
-                                data-bs-slide="prev">Anterior</button>
+                                data-bs-slide="prev">Voltar</button>
                             <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
                                 data-bs-slide="next">Próximo</button>
                         </div>
@@ -188,7 +188,7 @@
 
                         <div class="card-footer d-flex justify-content-evenly">
                             <button type="button" class="btn btn-warning" data-bs-target="#carouselPerguntas"
-                                data-bs-slide="prev">Anterior</button>
+                                data-bs-slide="prev">Voltar</button>
                             <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
                                 data-bs-slide="next">Próximo</button>
                         </div>
@@ -278,7 +278,7 @@
 
                         <div class="card-footer d-flex justify-content-evenly">
                             <button type="button" class="btn btn-warning" data-bs-target="#carouselPerguntas"
-                                data-bs-slide="prev">Anterior</button>
+                                data-bs-slide="prev">Voltar</button>
                             <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
                                 data-bs-slide="next">Próximo</button>
                         </div>
@@ -296,15 +296,42 @@
                         <div class="card-body">
                             <p class="card-text"><span class="fw-bold">Aviso Importante:</span>
                                 Esta ferramenta encontra-se em fase de desenvolvimento. </p>
-                                <p>Embora os módulos apresentados
+                            <p>Embora os módulos apresentados
                                 sejam uma referência útil, recomendamos a validação do seu projeto com nossa equipe de
                                 suporte para garantir a melhor adequação às suas necessidades.</p>
                         </div>
                         <div class="card-footer d-flex justify-content-evenly">
-                            <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
+                            <button type="button" class="btn btn-warning" data-bs-target="#carouselPerguntas"
                                 data-bs-slide="prev">Voltar</button>
-                            <button type="button" class="btn btn-primary calcular"
-                                data-bs-target="#carouselPerguntas"> Calcular</button>
+                            <button type="button" class="btn btn-primary calcular" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                                Calcular</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Modal Resultado -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-3" id="staticBackdropLabel">Total de Módulos</h1>
+
+                        </div>
+                        <div class="modal-body">
+                            <div class="modulosTotais"></div>
+                            <hr>
+
+                            <h1 class="modal-title fs-5 mb-2" id="staticBackdropLabel">Suas respostas</h1>
+                            <div class="respotasUsuario"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btnFecharModal"
+                                data-bs-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary">Baixar</button>
                         </div>
                     </div>
                 </div>
