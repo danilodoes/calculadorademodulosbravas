@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //Considera se está está marcado para somar os acessos veiculares
     if (vaiTerAcessoVeicular == "false") {
       acessosVeicularesTotais = 0;
+      acessosVeicularesRF = 0;
     }
 
     if (controleRemotoSim.checked === false) {
@@ -108,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       //Quantidade de Módulos RF IP
-
 
       if (acessosVeicularesRF > 0 && acessosVeicularesRF <= 4) {
         qtdModRFIP = 1;
