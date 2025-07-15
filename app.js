@@ -138,7 +138,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (qtdModAcesso === 0) {
         ++qtdModAcesso
         addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
-      };
+      }else {
+        qtdModAcesso += qtdModAcesso;
+        addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
+      };;
 
 
       /////////////// SERIAL 485 /////////////// SERIAL 485 /////////////// SERIAL 485
