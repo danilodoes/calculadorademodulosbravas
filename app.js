@@ -63,8 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Text fields (inputaveis)
     const acessosTotais = document.querySelector(".tfAcessosTotais").value || 0;
-    const acessosVeicularesTotais = document.querySelector(".tfAcessosVeicularesTotais").value || 0;
-    const acessosVeicularesRF = document.querySelector(".tfAcessosVeicularesRF").value || 0;
+    let acessosVeicularesTotais = document.querySelector(".tfAcessosVeicularesTotais").value || 0;
+    let acessosVeicularesRF = document.querySelector(".tfAcessosVeicularesRF").value || 0;
     const acessosCatraca = document.querySelector(".tfAcessosCatraca").value || 0;
     const qtdElevadores = document.querySelector(".tfQtdElevadores").value || 0;
     const qtdAndares = document.querySelector(".tfQtdAndares").value || 0;
@@ -74,9 +74,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
+    //Considera se está está marcado para somar os acessos veiculares
+    if (vaiTerAcessoVeicular == "false") {
+      acessosVeicularesTotais = 0;
+    }
+
+    if (controleRemotoSim.checked === false) {
+      acessosVeicularesRF = 0;
+    };
+
     //Quantidade de Módulos
     qtdModPorta = qtdModPortaIP = (acessosTotais - acessosCatraca - humModAcesso - acessosVeicularesRF);
     qtdModCatraca = qtdModCatracaIP = acessosCatraca;
+
 
 
     if (tipoComunicacao === "tcp") {
@@ -97,6 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       //Quantidade de Módulos RF IP
+
+
       if (acessosVeicularesRF > 0 && acessosVeicularesRF <= 4) {
         qtdModRFIP = 1;
 
@@ -138,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (qtdModAcesso === 0) {
         ++qtdModAcesso
         addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
-      }else {
+      } else {
         qtdModAcesso += qtdModAcesso;
         addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
       };;
@@ -177,9 +190,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       //Automações: Elevadores RS-485
       if (automacaoElevadores) {
-    
+
         qtdModAcesso += Number(qtdElevadores);
-       
+
         qtdMod2x10 = Math.floor(qtdAndares / 10) * (qtdElevadores);
 
         if (qtdAndares % 10 >= 1 && qtdAndares % 10 <= 4) {
