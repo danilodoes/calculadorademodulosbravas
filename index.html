@@ -323,15 +323,19 @@
                         </div>
                         <div class="modal-body">
                             <div class="modulosTotais"></div>
-                            <hr>
+                            
 
-                            <h1 class="modal-title fs-5 mb-2" id="staticBackdropLabel">Suas respostas</h1>
-                            <div class="respotasUsuario"></div>
+                            <div class="d-none">
+                                <hr>
+                                <h1 class="modal-title fs-5 mb-2" id="staticBackdropLabel">Suas respostas</h1>
+                                <div class="respotasUsuario "></div>
+                            </div>
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary btnFecharModal"
                                 data-bs-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn btn-primary">Baixar</button>
+                            <button type="button" class="btn btn-primary btnBaixar">Baixar</button>
                         </div>
                     </div>
                 </div>
@@ -349,6 +353,13 @@
 
     <!-- Controle de estado da página -->
     <script src="./controller.js"></script>
+
+    <!-- Download do PDF com os módulos calculados + respostas -->
+    <script src="./download.js"></script>
+
+    <!-- Biblioteca para fazer o PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </body>
 
 </html>

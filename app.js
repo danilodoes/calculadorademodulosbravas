@@ -1,27 +1,45 @@
 document.addEventListener("DOMContentLoaded", function () {
-  //Modal
+  // Modal
 
   const modulosTotais = document.querySelector(".modulosTotais");
   const respostasUsuario = document.querySelector(".respotasUsuario");
   const btnFecharModal = document.querySelector(".btnFecharModal");
   const modulosContabilizados = [];
 
-  //Adiciona o paragrafo com as respostas na div respostasUsuario
+  // Adiciona o paragrafo com as respostas na div respostasUsuario
   function addParagrafoComResposta(resposta) {
     const paragrafo = document.createElement("p");
     paragrafo.textContent = resposta;
     respostasUsuario.appendChild(paragrafo);
   }
 
-  //Adiciona o paragrafo com a quantidade de módulo na div modulosTotais
+  // Adiciona o paragrafo com a quantidade de módulo na div modulosTotais
   function addParagrafoComModulo(moduloTexto) {
     const paragrafo = document.createElement("p");
     paragrafo.textContent = moduloTexto;
     modulosTotais.appendChild(paragrafo);
   }
 
+  // Função para calcular Módulos PGM
+  function calcularModPGM(entrada, saida) {
+    if (entrada >= 12 && saida >= 12) return 4;
+    if (entrada >= 8 && saida >= 8) return 3;
+    if (entrada >= 4 && saida >= 4) return 2;
+    if (entrada <= 4 && saida <= 4) return 1;
+    return 0;
+  }
 
-  //Quantidade de Módulos
+  function calcularModPGMAntiCarona(acessos) {
+    if (acessos >= 12) return 4;
+    if (acessos >= 8) return 3;
+    if (acessos >= 4) return 2;
+    if (acessos <= 4) return 1;
+    return 0;
+
+  }
+
+
+  // Variáveis para contagem de módulos
   let humModAcesso = 4;
   let qtdModAcesso = 0; let qtdMod2x10 = 0;
   let qtdModRF = 0; let qtdModRFIP = 0;
@@ -30,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let qtdModCatraca = 0; let qtdModCatracaIP = 0;
 
 
-  //Função para resetar o valor das variáveis
+  // Função para resetar o valor das variáveis
 
   function resetarVariaveis() {
     humModAcesso = 4;
@@ -41,6 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
     qtdModCatraca = 0; qtdModCatracaIP = 0;
   };
 
+
+  // Botão Fechar Modal
   btnFecharModal.addEventListener("click", () => {
     modulosTotais.innerHTML = "";
     respostasUsuario.innerHTML = "";
@@ -73,8 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const qtdAcessosAntiCarona = document.querySelector(".tfQtdAcessosAntiCarona").value || 0;
     const qtdControleVagasEntrada = document.querySelector(".tfQtdControleVagasEntrada").value || 0;
     const qtdControleVagasSaida = document.querySelector(".tfQtdControleVagasSaida").value || 0;
-
-
 
 
     //Considera se está está marcado para somar os acessos veiculares
@@ -128,37 +146,25 @@ document.addEventListener("DOMContentLoaded", function () {
       //Automações: Elevadores
       if (automacaoElevadores) {
         qtdMod4x4IP = Math.ceil(qtdAndares / 4) * (qtdElevadores);
-
-        if (Math.ceil(qtdMod4x4IP / 40) > 1 && qtdModAcesso === 0) {
-          qtdModAcesso += Math.ceil(qtdMod4x4IP / 40);
-        };
       };
 
       //Automações: Anti-Carona
       if (automacaoAntiCarona) {
+        qtdMod4x4IP += calcularModPGM(qtdAcessosAntiCarona);
       };
 
       //Automações: Controle de Vagas
       if (automacaoControleVagas) {
+        qtdMod4x4IP += calcularModPGM(qtdControleVagasEntrada, qtdControleVagasSaida);
       };
 
-      //Quantidade de Módulos PGM 4x4 IP
+      //Imprimir quantidade de Módulos PGM 4x4 IP
       if (qtdMod4x4IP > 0) {
         const texto = `${qtdMod4x4IP} un - Módulo PGM 4x4 IP (PRD0013)`;
         modulosContabilizados.push(texto);
         addParagrafoComModulo(texto);
-      }
+      };
 
-      //Quantidade de Módulos Acesso Programável
-      if (qtdModAcesso === 0) {
-        ++qtdModAcesso
-        addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
-      } else {
-        console.log("ele mesmo" + qtdModAcesso)
-        qtdModAcesso += 1;
-        addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
-        console.log(qtdModAcesso)
-      };;
 
 
       /////////////// SERIAL 485 /////////////// SERIAL 485 /////////////// SERIAL 485
@@ -194,9 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       //Automações: Elevadores RS-485
       if (automacaoElevadores) {
-
         qtdModAcesso += Number(qtdElevadores);
-
         qtdMod2x10 = Math.floor(qtdAndares / 10) * (qtdElevadores);
 
         if (qtdAndares % 10 >= 1 && qtdAndares % 10 <= 4) {
@@ -210,47 +214,49 @@ document.addEventListener("DOMContentLoaded", function () {
           qtdMod4x4 = 0;
         };
 
-        if (qtdMod4x4 != 0) {
-
-          const texto = `${qtdMod4x4} un - Módulo PGM 4x4 RS-485 (PRD0014)`;
-          modulosContabilizados.push(texto);
-          addParagrafoComModulo(texto);
-          console.log(`Quatidade de modulo acesso: ${qtdModAcesso}`);
-        };
-
         const texto = `${qtdMod2x10} un - Módulo PGM 2x10 RS-485 (PRD0063)`;
         modulosContabilizados.push(texto);
         addParagrafoComModulo(texto);
-
-        console.log(`Quatidade de modulo acesso: ${qtdModAcesso}`);
-
       };
 
       //Automações: Anti-Carona RS-485
       if (automacaoAntiCarona) {
+        qtdMod4x4 += calcularModPGMAntiCarona(qtdAcessosAntiCarona);
+        console.log(qtdMod4x4);
+        console.log("passou aqui (anti-carona)");
       };
 
       //Automações: Controle de Vagas RS-485
       if (automacaoControleVagas) {
+        qtdMod4x4 += calcularModPGM(qtdControleVagasEntrada, qtdControleVagasSaida);
+        console.log(qtdMod4x4);
+        console.log("passou aqui (controle de vagas)");
       };
 
-      //Quantidade de Módulos Acesso Programável
-      if (qtdModAcesso === 0) {
-        ++qtdModAcesso;
-        addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
-      } else {
-        qtdModAcesso += qtdModAcesso;
-        addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
-      };
-
-      if (vaiTerAutomacao) {
-
-      }
     };
 
+    //Imprimir na tela a quantidade de Módulos PGM 4x4 RS-485 Totais
+    if (qtdMod4x4 != 0) {
 
+      const texto = `${qtdMod4x4} un - Módulo PGM 4x4 RS-485 (PRD0014)`;
+      modulosContabilizados.push(texto);
+      addParagrafoComModulo(texto);
+    };
 
+    //Quantidade de Módulos Acesso Programável
 
+    if (Math.ceil(qtdMod4x4IP / 40) > 1 && qtdModAcesso === 0) {
+      qtdModAcesso += Math.ceil(qtdMod4x4IP / 40);
+    };
+
+    if (qtdModAcesso === 0) {
+      ++qtdModAcesso;
+      addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
+    } else {
+      qtdModAcesso += 1;
+      addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
+    };
+   
 
 
     addParagrafoComResposta(`Quantidade de acessos totais: ${acessosTotais}`);
@@ -270,6 +276,7 @@ document.addEventListener("DOMContentLoaded", function () {
     addParagrafoComResposta(`Haverá automação de controle de cagas? ${automacaoControleVagas}`);
     addParagrafoComResposta(`Quantidade de acessos controle de vagas entrada: ${qtdControleVagasEntrada}`);
     addParagrafoComResposta(`Quantidade de acessos controle de vagas saída: ${qtdControleVagasSaida}`);
+    addParagrafoComResposta(`Envie este relatório ao suporte através do whatsapp: (11) 2924-7613`);
 
     resetarVariaveis();
 
