@@ -1,22 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
   //Modal
 
-  const modalBody = document.querySelector(".modulosTotais");
+  const modulosTotais = document.querySelector(".modulosTotais");
   const respostasUsuario = document.querySelector(".respotasUsuario");
   const btnFecharModal = document.querySelector(".btnFecharModal");
   const modulosContabilizados = [];
 
+  //Adiciona o paragrafo com as respostas na div respostasUsuario
   function addParagrafoComResposta(resposta) {
     const paragrafo = document.createElement("p");
     paragrafo.textContent = resposta;
     respostasUsuario.appendChild(paragrafo);
   }
 
-
+  //Adiciona o paragrafo com a quantidade de módulo na div modulosTotais
   function addParagrafoComModulo(moduloTexto) {
     const paragrafo = document.createElement("p");
     paragrafo.textContent = moduloTexto;
-    modalBody.appendChild(paragrafo);
+    modulosTotais.appendChild(paragrafo);
   }
 
 
@@ -41,7 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   btnFecharModal.addEventListener("click", () => {
-    modalBody.innerHTML = "";
+    modulosTotais.innerHTML = "";
+    respostasUsuario.innerHTML = "";
     resetarVariaveis();
   });
 
@@ -129,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (Math.ceil(qtdMod4x4IP / 40) > 1 && qtdModAcesso === 0) {
           qtdModAcesso += Math.ceil(qtdMod4x4IP / 40);
-        }
+        };
       };
 
       //Automações: Anti-Carona
@@ -152,8 +154,10 @@ document.addEventListener("DOMContentLoaded", function () {
         ++qtdModAcesso
         addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
       } else {
-        qtdModAcesso += qtdModAcesso;
+        console.log("ele mesmo" + qtdModAcesso)
+        qtdModAcesso += 1;
         addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
+        console.log(qtdModAcesso)
       };;
 
 
