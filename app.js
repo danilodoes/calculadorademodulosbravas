@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Adiciona o paragrafo com a quantidade de módulo na div modulosTotais
   function addParagrafoComModulo(moduloTexto) {
     const paragrafo = document.createElement("p");
-    paragrafo.textContent = moduloTexto;
+    paragrafo.innerHTML = moduloTexto;
     modulosTotais.appendChild(paragrafo);
   }
 
@@ -71,6 +71,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnCalcular = document.querySelector(".calcular");
   btnCalcular.addEventListener("click", () => {
 
+    //Função para montar o LINK para colocar dentro do parágrafo
+    function montaLink(url, codProduto) {
+      const linkMontado = `<a href="${url}" class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" target="_blank"><sup> ${codProduto}</sup></a>`
+      return linkMontado;
+    };
+
+    //Função para concatenar o link criado e o texto para formar o parágrafo completo
+    function paragrafoLinkavel(qtdModulos, tipoModulo, callback) {
+      const link = callback();
+      const linkavel = `${qtdModulos} un - ${tipoModulo} ${link}`
+      return linkavel;
+
+    };
+
     // Radios e Switches
     const tipoComunicacao = document.querySelector('input[name="rd_Comunicacao"]:checked').value;
     const vaiTerAcessoVeicular = document.querySelector('input[name="rd_checkAcessoVeicular"]:checked').value;
@@ -94,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const qtdControleVagasSaida = document.querySelector(".tfQtdControleVagasSaida").value || 0;
 
 
-    //Considera se está está marcado para somar os acessos veiculares
+    //Considera se está marcado para somar os acessos veiculares
     if (vaiTerAcessoVeicular == "false") {
       acessosVeicularesTotais = 0;
       acessosVeicularesRF = 0;
@@ -111,18 +125,23 @@ document.addEventListener("DOMContentLoaded", function () {
     if (tipoComunicacao === "tcp") {
       //Quantidade de Módutos Porta IP
       if (qtdModPortaIP > 0 && automacaoElevadores === false) {
-        const texto = `${qtdModPortaIP} un - Módulo Porta IP (PRD0008)`;
-        modulosContabilizados.push(texto)
-        addParagrafoComModulo(texto);
+        const paragrafo = paragrafoLinkavel(`${qtdModPortaIP}`, `Módulo Porta IP`, () => montaLink("https://bravas.ind.br/Produtos/57/PRD0008-Modulo-Porta-IP", "(PRD0008)"));
+        addParagrafoComModulo(paragrafo);
 
-    
+        // const texto = `${qtdModPortaIP} un - Módulo Porta IP (PRD0008)`;
+        // modulosContabilizados.push(texto)
+        // addParagrafoComModulo(texto);
+
       };
 
       //Quantidade de Módulos Catraca IP
       if (qtdModCatracaIP > 0) {
-        const texto = `${qtdModCatracaIP} un - Módulo Catraca IP (PRD0016)`;
-        modulosContabilizados.push(texto);
-        addParagrafoComModulo(texto);
+        const paragrafo = paragrafoLinkavel(`${qtdModCatracaIP}`, `Módulo Catraca IP`, () => montaLink("https://bravas.ind.br/Produtos/60/PRD0016-Modulo-Catraca-IP", "(PRD0016)"));
+        addParagrafoComModulo(paragrafo);
+
+        // const texto = `${qtdModCatracaIP} un - Módulo Catraca IP (PRD0016)`;
+        // modulosContabilizados.push(texto);
+        // addParagrafoComModulo(texto);
 
       };
 
@@ -136,34 +155,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
       };
       if (qtdModRFIP > 0) {
-        const texto = `${qtdModRFIP} un - Módulo RF IP (PRD0009)`;
-        modulosContabilizados.push(texto);
-        addParagrafoComModulo(texto);
+        const paragrafo = paragrafoLinkavel(`${qtdModRFIP}`, `Módulo RF IP`, () => montaLink("https://bravas.ind.br/Produtos/58/PRD0009-Modulo-Receptor-RF-IP", "(PRD0009)"));
+        addParagrafoComModulo(paragrafo);
+
+        // const texto = `${qtdModRFIP} un - Módulo RF IP (PRD0009)`;
+        // modulosContabilizados.push(texto);
+        // addParagrafoComModulo(texto);
       };
 
       //Automações: Elevadores
       if (automacaoElevadores) {
         qtdMod4x4IP = Math.ceil(qtdAndares / 4) * (qtdElevadores);
 
-        console.log("Quantidade de módulo porta antes: " + qtdModPortaIP);
-
-        if (qtdElevadores > 4) {
-          
           const qtdModPortaIPExtra = Number(qtdElevadores);
-        
-
           qtdModPortaIP += qtdModPortaIPExtra;
-
-          
-
+        
           if (qtdModPortaIP > 0) {
-            const texto = `${qtdModPortaIP} un - Módulo Porta IP (PRD0008)`;
-            modulosContabilizados.push(texto)
-            addParagrafoComModulo(texto);
+            const paragrafo = paragrafoLinkavel(`${qtdModPortaIP}`, `Módulo Porta IP`, () => montaLink("https://bravas.ind.br/Produtos/57/PRD0008-Modulo-Porta-IP", "(PRD0008)"));
+            addParagrafoComModulo(paragrafo);
+
+            // const texto = `${qtdModPortaIP} un - Módulo Porta IP (PRD0008)`;
+            // modulosContabilizados.push(texto)
+            // addParagrafoComModulo(texto);
 
           };
 
-        };
+        
       };
 
       //Automações: Anti-Carona
@@ -179,9 +196,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       //Imprimir quantidade de Módulos PGM 4x4 IP
       if (qtdMod4x4IP > 0) {
-        const texto = `${qtdMod4x4IP} un - Módulo PGM 4x4 IP (PRD0013)`;
-        modulosContabilizados.push(texto);
-        addParagrafoComModulo(texto);
+        const paragrafo = paragrafoLinkavel(`${qtdMod4x4IP}`, `Módulo PGM 4x4 IP`, () => montaLink("https://bravas.ind.br/Produtos/59/PRD0013-Modulo-PGM-4-IP", "(PRD0013)"));
+        addParagrafoComModulo(paragrafo);
+
+        // const texto = `${qtdMod4x4IP} un - Módulo PGM 4x4 IP (PRD0013)`;
+        // modulosContabilizados.push(texto);
+        // addParagrafoComModulo(texto);
       };
 
 
@@ -190,16 +210,22 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (tipoComunicacao === "serial") {
       //Quantidade de Módulos Porta RS-485
       if (qtdModPorta > 0) {
-        const texto = `${qtdModPorta} un - Módulo Porta RS-485 (PRD0011)`;
-        modulosContabilizados.push(texto)
-        addParagrafoComModulo(texto);
+        const paragrafo = paragrafoLinkavel(`${qtdModPorta}`, `Módulo Porta RS-485`, () => montaLink("https://bravas.ind.br/Produtos/29/PRD0011-Modulo-Porta", "(PRD0011)"));
+        addParagrafoComModulo(paragrafo);
+
+        // const texto = `${qtdModPorta} un - Módulo Porta RS-485 (PRD0011)`;
+        // modulosContabilizados.push(texto)
+        // addParagrafoComModulo(texto);
       };
 
       //Quantidade de Módulos Catraca RS-485
       if (qtdModCatraca > 0) {
-        const texto = `${qtdModCatraca} un - Módulo Catraca RS-485 (PRD0010)`;
-        modulosContabilizados.push(texto)
-        addParagrafoComModulo(texto);
+        const paragrafo = paragrafoLinkavel(`${qtdModCatraca}`, `Módulo Catraca RS-485`, () => montaLink("https://bravas.ind.br/Produtos/28/PRD0010-Modulo-Catraca", "(PRD0010)"));
+        addParagrafoComModulo(paragrafo);
+
+        // const texto = `${qtdModCatraca} un - Módulo Catraca RS-485 (PRD0010)`;
+        // modulosContabilizados.push(texto)
+        // addParagrafoComModulo(texto);
       };
 
       //Quantidade de Módulos RF RS-485
@@ -212,9 +238,12 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       if (qtdModRF > 0) {
-        const texto = `${qtdModRF} un - Módulo RF RS-485 (PRD0018)`;
-        modulosContabilizados.push(texto);
-        addParagrafoComModulo(texto);
+        const paragrafo = paragrafoLinkavel(`${qtdModRF}`, `Módulo RF RS-485`, () => montaLink("https://bravas.ind.br/Produtos/31/PRD0018-Modulo-Receptor-RF", "(PRD0018)"));
+        addParagrafoComModulo(paragrafo);
+
+        // const texto = `${qtdModRF} un - Módulo RF RS-485 (PRD0018)`;
+        // modulosContabilizados.push(texto);
+        // addParagrafoComModulo(texto);
       };
 
       //Automações: Elevadores RS-485
@@ -233,21 +262,23 @@ document.addEventListener("DOMContentLoaded", function () {
           qtdMod4x4 = 0;
         };
 
-        const texto = `${qtdMod2x10} un - Módulo PGM 2x10 RS-485 (PRD0063)`;
-        modulosContabilizados.push(texto);
-        addParagrafoComModulo(texto);
+        const paragrafo = paragrafoLinkavel(`${qtdMod2x10}`, `Módulo PGM 2x10 RS-485`, () => montaLink("https://bravas.ind.br/Produtos/51/PRD0063-Modulo-PGM-2-IN-10-OUT", "(PRD0063)"));
+        addParagrafoComModulo(paragrafo);
+
+        // const texto = `${qtdMod2x10} un - Módulo PGM 2x10 RS-485 (PRD0063)`;
+        // modulosContabilizados.push(texto);
+        // addParagrafoComModulo(texto);
       };
 
       //Automações: Anti-Carona RS-485
       if (automacaoAntiCarona) {
         qtdMod4x4 += calcularModPGMAntiCarona(qtdAcessosAntiCarona);
-      
+
       };
 
       //Automações: Controle de Vagas RS-485
       if (automacaoControleVagas) {
         qtdMod4x4 += calcularModPGM(qtdControleVagasEntrada, qtdControleVagasSaida);
-      
       };
 
     };
@@ -255,10 +286,14 @@ document.addEventListener("DOMContentLoaded", function () {
     //Imprimir na tela a quantidade de Módulos PGM 4x4 RS-485 Totais
     if (qtdMod4x4 != 0) {
 
-      const texto = `${qtdMod4x4} un - Módulo PGM 4x4 RS-485 (PRD0014)`;
-      modulosContabilizados.push(texto);
-      addParagrafoComModulo(texto);
+      const paragrafo = paragrafoLinkavel(`${qtdMod4x4}`, `Módulo PGM 4x4 RS-485`, () => montaLink("https://bravas.ind.br/Produtos/30/PRD0014-Modulo-PGM-4-in-4-out", "(PRD0014)"));
+      addParagrafoComModulo(paragrafo);
+
+      // const texto = `${qtdMod4x4} un - Módulo PGM 4x4 RS-485 <a href="https://bravas.ind.br/Produtos/32/PRD0028-Modulo-Acesso-Programavel" class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" target="_blank"><sup> (PRD0014)</sup></a>`;
+      // modulosContabilizados.push(texto);
+      // addParagrafoComModulo(texto);
     };
+
 
     //Quantidade de Módulos Acesso Programável
 
@@ -268,12 +303,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (qtdModAcesso === 0) {
       ++qtdModAcesso;
-      addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
+      // addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável <a href="https://bravas.ind.br/Produtos/32/PRD0028-Modulo-Acesso-Programavel" class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" target="_blank"><sup> (PRD0028)</sup></a>`);
+
+      const paragrafo = paragrafoLinkavel(`${qtdModAcesso}`, `Módulo Acesso Programável`, () => montaLink("https://bravas.ind.br/Produtos/32/PRD0028-Modulo-Acesso-Programavel", "(PRD0028)"));
+      addParagrafoComModulo(paragrafo);
+
     } else {
       qtdModAcesso += 1;
-      addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
-    };
+      // addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável <a href="https://bravas.ind.br/Produtos/32/PRD0028-Modulo-Acesso-Programavel" class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" target="_blank"><sup> (PRD0028)</sup></a>`);
 
+      const paragrafo = paragrafoLinkavel(`${qtdModAcesso}`, `Módulo Acesso Programável`, () => montaLink("https://bravas.ind.br/Produtos/32/PRD0028-Modulo-Acesso-Programavel", "(PRD0028)"));
+      addParagrafoComModulo(paragrafo);
+    };
 
 
     addParagrafoComResposta(`Quantidade de acessos totais: ${acessosTotais}`);
