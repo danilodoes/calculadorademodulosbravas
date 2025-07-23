@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
         y += 7;
 
         // Link para envio via WhatsApp
-        const linkTexto = "Clique aqui para enviar via WhatsApp";
+        const linkTexto = "Clique aqui para enviar o seu relatório ao suporte";
         const linkURL = "https://api.whatsapp.com/send/?phone=551129247613&text=Ol%C3%A1%20suporte%2C%20gostaria%20da%20aprova%C3%A7%C3%A3o%20do%20c%C3%A1lculo%20de%20m%C3%B3dulos%20para%20o%20meu%20projeto.&type=phone_number&app_absent=0";
 
         doc.setTextColor(0, 0, 255); // azul para indicar link

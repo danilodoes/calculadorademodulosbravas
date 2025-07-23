@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // Função para resetar o valor das variáveis
-
   function resetarVariaveis() {
     humModAcesso = 4;
     qtdModAcesso = 0; qtdMod2x10 = 0;
@@ -106,18 +105,17 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     //Quantidade de Módulos
-    qtdModPorta = qtdModPortaIP = (acessosTotais - acessosCatraca - humModAcesso - acessosVeicularesRF);
+    qtdModPorta = qtdModPortaIP = (acessosTotais - humModAcesso - acessosVeicularesRF);
     qtdModCatraca = qtdModCatracaIP = acessosCatraca;
-
-
 
     if (tipoComunicacao === "tcp") {
       //Quantidade de Módutos Porta IP
-      if (qtdModPortaIP > 0) {
+      if (qtdModPortaIP > 0 && automacaoElevadores === false) {
         const texto = `${qtdModPortaIP} un - Módulo Porta IP (PRD0008)`;
         modulosContabilizados.push(texto)
         addParagrafoComModulo(texto);
 
+    
       };
 
       //Quantidade de Módulos Catraca IP
@@ -146,11 +144,32 @@ document.addEventListener("DOMContentLoaded", function () {
       //Automações: Elevadores
       if (automacaoElevadores) {
         qtdMod4x4IP = Math.ceil(qtdAndares / 4) * (qtdElevadores);
+
+        console.log("Quantidade de módulo porta antes: " + qtdModPortaIP);
+
+        if (qtdElevadores > 4) {
+          
+          const qtdModPortaIPExtra = Number(qtdElevadores);
+        
+
+          qtdModPortaIP += qtdModPortaIPExtra;
+
+          
+
+          if (qtdModPortaIP > 0) {
+            const texto = `${qtdModPortaIP} un - Módulo Porta IP (PRD0008)`;
+            modulosContabilizados.push(texto)
+            addParagrafoComModulo(texto);
+
+          };
+
+        };
       };
 
       //Automações: Anti-Carona
       if (automacaoAntiCarona) {
-        qtdMod4x4IP += calcularModPGM(qtdAcessosAntiCarona);
+        qtdMod4x4IP += calcularModPGMAntiCarona(qtdAcessosAntiCarona);
+
       };
 
       //Automações: Controle de Vagas
@@ -222,15 +241,13 @@ document.addEventListener("DOMContentLoaded", function () {
       //Automações: Anti-Carona RS-485
       if (automacaoAntiCarona) {
         qtdMod4x4 += calcularModPGMAntiCarona(qtdAcessosAntiCarona);
-        console.log(qtdMod4x4);
-        console.log("passou aqui (anti-carona)");
+      
       };
 
       //Automações: Controle de Vagas RS-485
       if (automacaoControleVagas) {
         qtdMod4x4 += calcularModPGM(qtdControleVagasEntrada, qtdControleVagasSaida);
-        console.log(qtdMod4x4);
-        console.log("passou aqui (controle de vagas)");
+      
       };
 
     };
@@ -256,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
       qtdModAcesso += 1;
       addParagrafoComModulo(`${qtdModAcesso} un - Módulo Acesso Programável (PRD0028)`);
     };
-   
+
 
 
     addParagrafoComResposta(`Quantidade de acessos totais: ${acessosTotais}`);
@@ -276,8 +293,6 @@ document.addEventListener("DOMContentLoaded", function () {
     addParagrafoComResposta(`Haverá automação de controle de cagas? ${automacaoControleVagas}`);
     addParagrafoComResposta(`Quantidade de acessos controle de vagas entrada: ${qtdControleVagasEntrada}`);
     addParagrafoComResposta(`Quantidade de acessos controle de vagas saída: ${qtdControleVagasSaida}`);
-    addParagrafoComResposta(`Envie este relatório ao suporte através do whatsapp: (11) 2924-7613`);
-
     resetarVariaveis();
 
   });
