@@ -153,7 +153,11 @@ document.addEventListener("DOMContentLoaded", function () {
       } else if (acessosVeicularesRF >= 5 && acessosVeicularesRF <= 8) {
         qtdModRFIP = 2;
 
-      };
+      }else if (acessosVeicularesRF >= 9 && acessosVeicularesRF <= 12) {
+        qtdModRFIP = 3;
+      }
+
+      
       if (qtdModRFIP > 0) {
         const paragrafo = paragrafoLinkavel(`${qtdModRFIP}`, `Módulo RF IP`, () => montaLink("https://bravas.ind.br/Produtos/58/PRD0009-Modulo-Receptor-RF-IP", "(PRD0009)"));
         addParagrafoComModulo(paragrafo);
