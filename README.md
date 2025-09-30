@@ -2,8 +2,6 @@
 
 - Git Page do projeto: [Clique aqui](https://danilodoes.github.io/calculadorademodulosbravas/)
 
-- Onde testar: [Clique aqui para visualizar o projeto em funcionamento](https://danilodoes.github.io/calculadorademodulosbravas/)
-
 ## Sobre o Projeto
 Este projeto é uma **calculadora especializada** desenvolvida para auxiliar no **dimensionamento de módulos de comandos** necessários em instalações de **Controle de Acesso** e **Automação de Circuitos Eletroeletrônicos**.
 
