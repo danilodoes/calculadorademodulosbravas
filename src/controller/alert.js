@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const appendAlert = (message, type) => {
             const wrapper = document.createElement('div')
             wrapper.innerHTML = [
-                `<div class="alert alert-${type} alert-dismissible vh-100 d-flex flex-column text-center justify-content-center align-items-center p-0 m-0" role="alert">`,
+                `<div class="alert alert-${type} alert-dismissible text-center justify-content-center align-items-center p-0 m-0" role="alert">`,
                 `<p class="fw-bold">Importante ❗</p>`,
                 `<p>As automações que mostramos aqui são apenas algumas das mais utilizadas com o nosso Módulo de Acesso Programável.</p>`,
                 `<p>Mas fique tranquilo: ele vai muito além disso! 🚀</p>`,

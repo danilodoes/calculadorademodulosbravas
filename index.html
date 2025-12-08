@@ -15,118 +15,72 @@
 
 <body class="custom-body">
 
-    <div id="carouselPerguntas" class="carousel slide" data-bs-interval="false">
-
-        <!-- Botões indicadores de posição do carrossel -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselPerguntas" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselPerguntas" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselPerguntas" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselPerguntas" data-bs-slide-to="3"
-                aria-label="Slide 4"></button>
-            <button type="button" data-bs-target="#carouselPerguntas" data-bs-slide-to="4"
-                aria-label="Slide 5"></button>
-            <button type="button" data-bs-target="#carouselPerguntas" data-bs-slide-to="5"
-                aria-label="Slide 6"></button>
+    <div class="card custom-card">
+        <div class="card-header text-center mb-3">
+            <h5 class="custom-name">BRAVAS</h5>
+            <span class="card-text">Calculadora de Módulos</span>
         </div>
+        <div class="px-2">
+            <nav>
+                <div class="nav nav-tabs d-flex" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-controle-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-controle" type="button" role="tab" aria-controls="nav-controle"
+                        aria-selected="true">Controle de Acesso</button>
 
-        <div class="carousel-inner">
+                    <button class="nav-link" id="nav-automacao-tab" data-bs-toggle="tab" data-bs-target="#nav-automacao"
+                        type="button" role="tab" aria-controls="nav-automacao" aria-selected="false">Automações</button>
 
-            <!-- Slide 1 - Quantidade de acessos -->
-            <div class="carousel-item active">
-                <div class="custom-style container vh-100 d-flex align-items-center justify-content-center">
-                    <div class="card custom-card text-center">
-                        <div class="card-header">
-                            <h5 class="custom-name">BRAVAS</h5>
-                            <span class="card-text">Calculadora de Módulos</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title mb-4">Quantos acessos totais você quer controlar?</h5>
-                            <p>(Portas, Portões ou Cancelas)</p>
-                            <input type="number" min="1" placeholder="Ex.: 10"
-                                class="tfAcessosTotais custom-input form-control w-50 mx-auto">
-                        </div>
-                        <div class="card-footer d-flex justify-content-evenly">
-                            <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
-                                data-bs-slide="next">Próximo</button>
-                        </div>
-                    </div>
+                    <button class="nav-link ms-auto" id="nav-calcular-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-calcular" type="button" role="tab" aria-controls="nav-calcular"
+                        aria-selected="false">Calcular</button>
+
                 </div>
-            </div>
+            </nav>
 
-            <!-- Slide 2 - Tipo de comunicação -->
-            <div class="carousel-item">
-                <div class="custom-style container vh-100 d-flex align-items-center justify-content-center">
-                    <div class="card custom-card text-center">
-                        <div class="card-header">
-                            <h5 class="custom-name">BRAVAS</h5>
-                            <span class="card-text">Calculadora de Módulos</span>
+            <div class="tab-content card-body" id="nav-tabContent">
+                <!-- ? CONTANT TAB: CONTROLE DE ACESSOS -->
+                <div class="tab-pane fade show active" id="nav-controle" role="tabpanel"
+                    aria-labelledby="nav-controle-tab" tabindex="0">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-pedestres-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-pedestres" type="button" role="tab" aria-controls="nav-pedestres"
+                                aria-selected="false">Pedestres</button>
+
+                            <button class="nav-link" id="nav-veiculos-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-veiculos" type="button" role="tab" aria-controls="nav-veiculos"
+                                aria-selected="false">Veículos</button>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title mb-4">Qual tipo de comunicação?</h5>
-                            <div class="d-flex flex-column align-items-start px-4">
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input" type="radio" name="rd_Comunicacao" id="rd_IP"
-                                        value="tcp" checked>
-                                    <label class="form-check-label" for="rd_IP">
-                                        TCP/IP
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="rd_Comunicacao" id="rd_485"
-                                        value="serial">
-                                    <label class="form-check-label" for="rd_485">RS-485</label>
-                                </div>
+                    </nav>
+
+                    <div class="tab-content d-flex justify-content-center" id="nav-tabContent">
+
+                        <div class="tab-pane fade show active" id="nav-pedestres" role="tabpanel"
+                            aria-labelledby="nav-pedestres-tab" tabindex="0">
+                            <div class="custom-container">
+                                <h5 class="card-title">Quantas catracas e/ou torniquetes você quer controlar?</h5>
+                                <input type="number" min="1" placeholder="Ex.: 10"
+                                    class="tfCatracas custom-input form-control mx-auto mb-3" value="0">
+
+                                <h5 class="card-title">Quantos acessos sociais você quer controlar?</h5>
+                                <p>(Não considere acessos veiculares)</p>
+                                <input type="number" min="1" placeholder="Ex.: 10"
+                                    class="tfPedestres custom-input form-control mx-auto" value="0">
                             </div>
                         </div>
-                        <div class="card-footer d-flex justify-content-evenly">
-                            <button type="button" class="btn btn-warning" data-bs-target="#carouselPerguntas"
-                                data-bs-slide="prev">Voltar</button>
-                            <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
-                                data-bs-slide="next">Próximo</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Slide 3 - Acesso Veicular -->
-            <div class="carousel-item">
-                <div class="custom-style container vh-100 d-flex align-items-center justify-content-center">
-                    <div class="card custom-card text-center">
-                        <div class="card-header">
-                            <h5 class="custom-name">BRAVAS</h5>
-                            <span class="card-text">Calculadora de Módulos</span>
-                        </div>
-                        <div class="card-body">
+                        <div class="tab-pane fade" id="nav-veiculos" role="tabpanel" aria-labelledby="nav-veiculos-tab"
+                            tabindex="0">
 
-                            <h5 class="card-title mb-3">Haverá controle de algum acesso veicular?</h5>
-                            <div class="d-flex flex-column align-items-start px-4">
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input" type="radio" name="rd_checkAcessoVeicular"
-                                        id="rd_acessoVeicularSim" value="true">
-                                    <label class="form-check-label" for="rd_acessoVeicularSim">
-                                        Sim
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="rd_checkAcessoVeicular"
-                                        id="rd_acessoVeicularNao" value="false" checked>
-                                    <label class="form-check-label" for="rd_acessoVeicularNao">Não</label>
-                                </div>
-                            </div>
-
-                            <div id="qtdAcessosVeiculares" class="d-none">
-                                <h5 class="card-title mt-4 mb-3">Quantos acessos veiculares totais?</h5>
-                                <input type="number" min="1" placeholder="Ex.: 4"
-                                    class="tfAcessosVeicularesTotais custom-input form-control w-50 mx-auto">
-
+                            <div class="custom-container">
+                                <h5 class="card-title">Quantos acessos você quer controlar?</h5>
+                                <p>(Apenas Portões ou Cancelas)</p>
+                                <input type="number" min="1" placeholder="Ex.: 10"
+                                    class="tfVeiculos custom-input form-control mx-auto" value="0">
                                 <h5 class="card-title my-3"> Algum desses acessos será acionado via controle remoto?
                                 </h5>
-                                <div class="d-flex flex-column align-items-start px-4">
-                                    <div class="form-check mb-2">
+                                <div class="d-flex gap-5 justify-content-center">
+                                    <div class="form-check">
                                         <input class="form-check-input" type="radio" name="rd_checkControleRemoto"
                                             id="rd_controleRemotoSim" value="true">
                                         <label class="form-check-label" for="rd_controleRemotoSim">
@@ -142,171 +96,125 @@
                             </div>
 
                             <div id="qtdAcessosVeicularesRF" class="d-none">
-                                <h5 class="card-title my-3">Quantos?</h5>
+                                <h5 class="card-title my-3 text-center">Quantos?</h5>
                                 <input type="number" min="1" placeholder="Ex.: 2"
-                                    class="tfAcessosVeicularesRF custom-input form-control w-50 mx-auto">
+                                    class="tfAcessosVeicularesRF custom-input form-control mx-auto">
                             </div>
 
-                            
-                        </div>
-
-                        <div class="card-footer d-flex justify-content-evenly">
-                            <button type="button" class="btn btn-warning" data-bs-target="#carouselPerguntas"
-                                data-bs-slide="prev">Voltar</button>
-                            <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
-                                data-bs-slide="next">Próximo</button>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Slide 4 - Acesso Catraca -->
-            <div class="carousel-item">
-                <div class="custom-style container vh-100 d-flex align-items-center justify-content-center">
-                    <div class="card custom-card text-center">
-                        <div class="card-header">
-                            <h5 class="custom-name">BRAVAS</h5>
-                            <span class="card-text">Calculadora de Módulos</span>
+                <!-- ? CONTENT TAB: AUTOMAÇÕES -->
+                <div class="tab-pane fade" id="nav-automacao" role="tabpanel" aria-labelledby="nav-automacao-tab"
+                    tabindex="0">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active show" id="nav-carona-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-carona" type="button" role="tab" aria-controls="nav-carona"
+                                aria-selected="false">Anti-Carona</button>
+
+                            <button class="nav-link" id="nav-audio-tab" data-bs-toggle="tab" data-bs-target="#nav-audio"
+                                type="button" role="tab" aria-controls="nav-audio" aria-selected="false">Áudio</button>
+
+                            <button class="nav-link" id="nav-vagas-tab" data-bs-toggle="tab" data-bs-target="#nav-vagas"
+                                type="button" role="tab" aria-controls="nav-vagas" aria-selected="false">Controle de
+                                Vagas</button>
+
+                            <button class="nav-link" id="nav-elevadores-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-elevadores" type="button" role="tab" aria-controls="nav-elevadores"
+                                aria-selected="true">Elevadores</button>
+
+                            <button class="nav-link" id="nav-agua-tab" data-bs-toggle="tab" data-bs-target="#nav-agua"
+                                type="button" role="tab" aria-controls="nav-agua" aria-selected="false">Nível de
+                                Água</button>
+
+                            <button class="nav-link" id="nav-iluminacao-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-iluminacao" type="button" role="tab" aria-controls="nav-iluminacao"
+                                aria-selected="false">Iluminação</button>
                         </div>
-                        <div class="card-body">
+                    </nav>
 
-                            <h5 class="card-title mb-3">Haverá controle de catracas e/ou torniquetes?</h5>
-                            <div class="d-flex flex-column align-items-start px-4">
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input" type="radio" name="rd_checkCatraca"
-                                        id="rd_catracaSim" value="true">
-                                    <label class="form-check-label" for="rd_catracaSim">
-                                        Sim
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="rd_checkCatraca"
-                                        id="rd_catracaNao" value="false" checked>
-                                    <label class="form-check-label" for="rd_catracaNao">Não</label>
-                                </div>
-                            </div>
-
-                            <div id="qtdCatraca" class="d-none">
-                                <h5 class="card-title my-3">Quantos?</h5>
+                    <div class="tab-content d-flex justify-content-center" id="nav-tabContent">
+                        <div class="tab-pane fade active show" id="nav-carona" role="tabpanel"
+                            aria-labelledby="nav-carona-tab" tabindex="0">
+                            <div class="containerAudio custom-container">
+                                <h5 class="card-title">Quantos portões com anti-carona?</h5>
                                 <input type="number" min="1" placeholder="Ex.: 2"
-                                    class="tfAcessosCatraca custom-input form-control w-50 mx-auto">
+                                    class="tfQtdAcessosAntiCarona custom-input form-control mx-auto" value="0">
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-audio" role="tabpanel" aria-labelledby="nav-audio-tab"
+                            tabindex="0">
+                            <div class="containerAudio custom-container">
+                                <h5 class="card-title">Quantas saídas de áudio?</h5>
+                                <input type="number" min="1" placeholder="Ex.: 3"
+                                    class="tfQtdAudio custom-input form-control mx-auto" value="0">
                             </div>
                         </div>
 
-                        <div class="card-footer d-flex justify-content-evenly">
-                            <button type="button" class="btn btn-warning" data-bs-target="#carouselPerguntas"
-                                data-bs-slide="prev">Voltar</button>
-                            <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
-                                data-bs-slide="next">Próximo</button>
+                        <div class="tab-pane fade" id="nav-vagas" role="tabpanel" aria-labelledby="nav-vagas-tab"
+                            tabindex="0">
+                            <div class="containerControleVagas custom-container">
+                                <h5 class="card-title">Quantos acessos de entrada?</h5>
+                                <input type="number" min="1" placeholder="Ex.: 1"
+                                    class="tfQtdControleVagasEntrada custom-input form-control mx-auto mb-3" value="0">
+
+                                <h5 class="card-title">Quantos acessos de saída?</h5>
+                                <input type="number" min="1" placeholder="Ex.: 1"
+                                    class="tfQtdControleVagasSaida custom-input form-control mx-auto" value="0">
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-elevadores" role="tabpanel"
+                            aria-labelledby="nav-elevadores-tab" tabindex="0">
+
+                            <div class="containerElevadores custom-container">
+                                <h5 class="card-title">Quantos elevadores?</h5>
+                                <input type="number" min="1" placeholder="Ex.: 5"
+                                    class="tfQtdElevadores custom-input form-control mx-auto mb-2" value="0">
+
+                                <h5 class="card-title">Quantos andares em cada elevador?</h5>
+                                <input type="number" min="1" placeholder="Ex.: 18"
+                                    class="tfQtdAndares custom-input form-control  mx-auto" value="0">
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-agua" role="tabpanel" aria-labelledby="nav-agua-tab"
+                            tabindex="0">
+                            <div class="containerSensores custom-container">
+                                <h5 class="card-title">Quantos sensores de nível?</h5>
+                                <input type="number" min="1" placeholder="Ex.: 2"
+                                    class="tfQtdSensores custom-input form-control mx-auto" value="0">
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-iluminacao" role="tabpanel"
+                            aria-labelledby="nav-iluminacao-tab" tabindex="0">
+                            <div class="containerIluminacao custom-container">
+                                <h5 class="card-title">Quantos circuitos você quer automatizar?</h5>
+                                <input type="number" min="1" placeholder="Ex.: 15"
+                                    class="tfQtdIluminacao custom-input form-control mx-auto" value="0">
+                            </div>
                         </div>
                     </div>
+
+
                 </div>
-            </div>
 
-            <!-- Slide 5 - Automações -->
-            <div class="carousel-item">
-                <div class="custom-style container vh-100 d-flex align-items-center justify-content-center">
-                    <div class="card custom-card text-center">
-                        <div class="card-header">
-                            <h5 class="custom-name">BRAVAS</h5>
-                            <span class="card-text">Calculadora de Módulos</span>
-                        </div>
-                        <div class="card-body">
-
-                            <h5 class="card-title mb-3">Pretende fazer alguma automação?</h5>
-                            <div class="d-flex flex-column align-items-start px-4">
-                                <div class="form-check mb-2">
-                                    <input class="form-check-input" type="radio" name="rd_checkAutomacao"
-                                        id="rd_automacaoSim" value="true">
-                                    <label class="form-check-label" for="rd_automacaoSim">
-                                        Sim
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="rd_checkAutomacao"
-                                        id="rd_automacaoNao" value="false" checked>
-                                    <label class="form-check-label" for="rd_automacaoNao">Não</label>
-                                </div>
-                            </div>
-
-                            <div id="quaisAutomacoes" class="d-none">
-                                <h5 class="card-title mb-2">Quais?</h5>
-                                <div id="automacao"
-                                    class="form-check form-switch d-flex flex-column align-items-start px-4">
-
-                                    <!-- Elevadores -->
-                                    <div class="form-check form-switch mb-2">
-                                        <input class="form-check-input" type="checkbox" role="switch" id="elevador">
-                                        <label class="form-check-label" for="elevador">Elevadores
-                                        </label>
-                                    </div>
-
-                                    <div class="containerElevadores mb-3 align-self-center d-none">
-                                        <h6 class="card-title my-2">Quantos elevadores?</h6>
-                                        <input type="number" min="1" placeholder="Ex.: 5"
-                                            class="tfQtdElevadores custom-input form-control w-50 mx-auto">
-
-                                        <h6 class="card-title my-2">Quantos andares em cada elevador?</h6>
-                                        <input type="number" min="1" placeholder="Ex.: 18"
-                                            class="tfQtdAndares custom-input form-control w-50 mx-auto">
-                                    </div>
-
-                                    <!-- Anti-Caronas -->
-                                    <div class="form-check form-switch mb-2">
-                                        <input class="form-check-input" type="checkbox" role="switch" id="antiCarona">
-                                        <label class="form-check-label" for="AntiCarona">Anti-Carona
-                                        </label>
-                                    </div>
-
-                                    <div class="containerAntiCarona mb-3 align-self-center d-none">
-                                        <h6 class="card-title my-2">Quantos portões?</h6>
-                                        <input type="number" min="1" placeholder="Ex.: 2"
-                                            class="tfQtdAcessosAntiCarona custom-input form-control w-50 mx-auto">
-                                    </div>
-
-                                    <!-- Controle de Vagas -->
-                                    <div class="form-check form-switch mb-2">
-                                        <input class="form-check-input" type="checkbox" role="switch" id="controleVaga">
-                                        <label class="form-check-label" for="controleVaga"> Controle de Vagas
-                                        </label>
-                                    </div>
-
-                                    <div class="containerControleVagas align-self-center d-none">
-                                        <h6 class="card-title mt-2">Quantos acessos de entrada?</h6>
-                                        <input type="number" min="1" placeholder="Ex.: 1"
-                                            class="tfQtdControleVagasEntrada custom-input form-control w-50 mx-auto">
-
-                                        <h6 class="card-title mt-1">Quantos acessos de saída?</h6>
-                                        <input type="number" min="1" placeholder="Ex.: 1"
-                                            class="tfQtdControleVagasSaida custom-input form-control w-50 mx-auto">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-footer d-flex justify-content-evenly">
-                            <button type="button" class="btn btn-warning" data-bs-target="#carouselPerguntas"
-                                data-bs-slide="prev">Voltar</button>
-                            <button type="button" class="btn btn-success" data-bs-target="#carouselPerguntas"
-                                data-bs-slide="next">Próximo</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 6 - Finalização -->
-            <div class="carousel-item">
-                <div class="custom-style container vh-100 d-flex align-items-center justify-content-center">
-                    <div class="card custom-card text-center">
-                        <div class="card-header">
-                            <h5 class="custom-name">BRAVAS</h5>
-                            <span class="card-text">Calculadora de Módulos</span>
-                        </div>
+                <!-- ? CONTANT TAB: CALCULAR -->
+                <div class="tab-pane fade" id="nav-calcular" role="tabpanel" aria-labelledby="nav-calcular-tab"
+                    tabindex="0">
+                    <div class="card text-center">
                         <div class="card-body">
                             <p class="card-text"><span class="fw-bold">Aviso Importante:</span>
                                 Esta ferramenta visa auxiliar na especificação do seu projeto. </p>
                             <p>Embora os módulos apresentados
-                                sejam uma referência útil, recomendamos a validação do seu projeto com nossa equipe de
+                                sejam uma referência útil, recomendamos a validação do seu projeto com nossa equipe
+                                de
                                 suporte para garantir a melhor adequação às suas necessidades.</p>
 
                             <a target="_blank" class="icon-link icon-link-hover"
@@ -319,75 +227,42 @@
                                         d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                                 </svg>
                             </a>
-
                         </div>
-                        <div class="card-footer d-flex justify-content-evenly">
-                            <button type="button" class="btn btn-warning" data-bs-target="#carouselPerguntas"
-                                data-bs-slide="prev">Voltar</button>
-                            <button type="button" class="btn btn-primary calcular" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <div class="card-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary calcular" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
                                 Calcular</button>
                         </div>
                     </div>
+
+
                 </div>
             </div>
-
-            <!-- Alerta -->
-            <div id="liveAlertPlaceholder"></div>
-
-            <!-- Modal Resultado -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-3" id="staticBackdropLabel">Total de Módulos</h1>
-
-                        </div>
-                        <div class="modal-body">
-                            <div class="modulosTotais">
-
-                            </div>
-
-                            <div class="d-none">
-                                <hr>
-                                <h1 class="modal-title fs-5 mb-2" id="staticBackdropLabel">Suas respostas</h1>
-                                <div class="respotasUsuario "></div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary btnFecharModal"
-                                data-bs-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn btn-primary btnBaixar">Baixar</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-
 
         </div>
-
     </div>
 
-    <!-- Alerta -->
-    <script src="./alert.js"></script>
+    <!-- ? Alerta -->
+    <div id="liveAlertPlaceholder"></div>
 
-    <!-- Bootstrap bundle (com JS do carrossel) -->
+
+    <!-- ? SCRIPT: Alerta -->
+    <script src="./src/controller/alert.js"></script>
+
+    <!-- ? SCRIPT:  Bootstrap bundle (com JS do carrossel) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 
-    <!-- A calculadora -->
+    <!-- ? SCRIPT: A calculadora -->
     <script src="./app.js"></script>
 
-    <!-- Controle de estado da página -->
-    <script src="./controller.js"></script>
+    <!-- ? SCRIPT: Controle de estado da página -->
+    <script src="./src/view/radios.js"></script>
 
-    <!-- Download do PDF com os módulos calculados + respostas -->
+    <!-- ? SCRIPT: Download do PDF com os módulos calculados + respostas -->
     <script src="./download.js"></script>
 
-    <!-- Biblioteca para fazer o PDF -->
+    <!-- ? SCRIPT: Biblioteca para fazer o PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 

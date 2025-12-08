@@ -8,9 +8,26 @@
 
 .custom-body {
   background-color: #0C86C6;
+  display: flex;
+  flex-direction: column;
+  padding: 5% 0;
+  align-items: center;
+  height: 100dvh;
+}
+
+.custom-card {
+  /* max-width: 800px !important; */
+  min-width: 800px !important;
+}
+
+.custom-container {
+  margin: 16px 0px 0px 0px;
+  text-align: center;
+  gap: 200px !important;
 }
 
 .custom-input {
+  width: 100px !important;
   text-align: center;
 }
 
