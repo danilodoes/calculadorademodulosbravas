@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let y = 20;
 
 
-
         // Seção: Módulos Contabilizados
         doc.setFont(undefined, 'bold');
         doc.text("Módulos Contabilizados:", 10, y);
