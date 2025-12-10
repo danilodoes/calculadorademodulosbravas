@@ -1,5 +1,5 @@
 /**
- * * 1 - Calcula a quantidade de módulos elevador ip
+ * * 1 - Calcula a quantidade de módulos acesso programável
  * * 2 - Monta os dados para modal
  */
 

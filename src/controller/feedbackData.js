@@ -19,3 +19,16 @@ export function addParagrafoComModulo(moduloTexto) {
     paragrafo.innerHTML = moduloTexto;
     modulosTotais.appendChild(paragrafo)
 }
+
+//Função para montar o LINK para colocar dentro do parágrafo
+export function montaLink(url, codProduto) {
+    const linkMontado = `<a href="${url}" class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" target="_blank"><sup> ${codProduto}</sup></a>`
+    return linkMontado
+}
+
+//Função para concatenar o link criado e o texto para formar o parágrafo completo
+export function paragrafoLinkavel(qtdModulos, tipoModulo, callback) {
+    const link = callback()
+    const linkavel = `${qtdModulos} un - ${tipoModulo} ${link}`
+    return linkavel
+}
