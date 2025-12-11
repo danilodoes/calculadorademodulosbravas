@@ -34,9 +34,9 @@
                     <button class="nav-link" id="nav-automacao-tab" data-bs-toggle="tab" data-bs-target="#nav-automacao"
                         type="button" role="tab" aria-controls="nav-automacao" aria-selected="false">Automações</button>
 
-                    <button class="nav-link ms-auto" id="nav-calcular-tab" data-bs-toggle="tab"
+                    <button class="nav-link ms-auto bg-success text-white" id="nav-calcular-tab" data-bs-toggle="tab"
                         data-bs-target="#nav-calcular" type="button" role="tab" aria-controls="nav-calcular"
-                        aria-selected="false">Calcular</button>
+                        aria-selected="false">CALCULAR</button>
 
                 </div>
             </nav>
@@ -259,14 +259,19 @@
                     <div class="modulosTotais">
                     </div>
 
+                    <div class="avisoCloud text-center">
+                    </div>
+
                     <div class="d-none">
                         <hr>
                         <h1 class="modal-title fs-5 mb-2" id="staticBackdropLabel">Suas respostas</h1>
-                        <div class="respotasUsuario "></div>
+                        <div class="respotasUsuario"></div>
                     </div>
 
                 </div>
                 <div class="modal-footer">
+
+
                     <button type="button" class="btn btn-secondary btnFecharModal"
                         data-bs-dismiss="modal">Fechar</button>
                     <button type="button" class="btn btn-primary btnBaixar">Baixar</button>
@@ -277,6 +282,9 @@
 
     <!-- ? SCRIPT: Alerta -->
     <script type="module" src="./src/controller/alert.js"></script>
+
+    <!-- ? SCRIPT: AvisoCloud -->
+    <script type="module" src="./src/view/avisoCloud.js"></script>
 
     <!-- ? SCRIPT:  Bootstrap bundle (com JS do carrossel) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

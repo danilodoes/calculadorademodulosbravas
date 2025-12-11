@@ -32,7 +32,7 @@ function calcIluminacao(qtdIluminacao) {
 //? Mostra a quatidade SOMADA de PGMs 4x4 no modal
 function mostrarQtdPGM4x4(qtdTotalPGM4x4) {
     if (qtdTotalPGM4x4 > 0) {
-        const paragrafo = paragrafoLinkavel(`${qtdTotalPGM4x4}`, `Módulo PGM 4x4 IP`, () => montaLink("https://bravas.ind.br/Produtos/59/PRD0013-Modulo-PGM-4-IP", "(PRD0013)"))
+        const paragrafo = paragrafoLinkavel(`${qtdTotalPGM4x4}`, `Módulo PGM 4 IP`, () => montaLink("https://bravas.ind.br/Produtos/59/PRD0013-Modulo-PGM-4-IP", "(PRD0013)"))
         addParagrafoComModulo(paragrafo)
     }
 }

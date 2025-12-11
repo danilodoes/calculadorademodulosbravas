@@ -7,14 +7,15 @@ import { addParagrafoComModulo, montaLink, paragrafoLinkavel } from "../controll
 
 export function calcPortaIP(qtdPortas, qtdVeiculos, qtdVeiculosRF) {
     const humModAcesso = 4
+    const qtdTotalPortas = qtdPortas + qtdVeiculos
 
-    if (qtdPortas > 4) {
+    if (qtdTotalPortas > 4) {
         if (qtdVeiculosRF <= 0) {
             const qtdModPortaIP = (qtdPortas + qtdVeiculos - humModAcesso)
             const paragrafo = paragrafoLinkavel(`${qtdModPortaIP}`, `Módulo Porta IP`, () => montaLink("https://bravas.ind.br/Produtos/57/PRD0008-Modulo-Porta-IP", "(PRD0008)"))
             addParagrafoComModulo(paragrafo)
-            
-        }else{
+
+        } else {
             const qtdModPortaIP = (qtdPortas + qtdVeiculos - qtdVeiculosRF - humModAcesso)
             const paragrafo = paragrafoLinkavel(`${qtdModPortaIP}`, `Módulo Porta IP`, () => montaLink("https://bravas.ind.br/Produtos/57/PRD0008-Modulo-Porta-IP", "(PRD0008)"))
             addParagrafoComModulo(paragrafo)
