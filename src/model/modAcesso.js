@@ -37,7 +37,7 @@ export function calcModAcesso(qtdPortas, qtdCatracas, qtdVeiculos, qtdVeiculosRF
         addParagrafoComModulo(paragrafo)
 
         //TODO: Chama o aviso de Cloud caso a quantidade de módulo acesso seja maior que dois! Descomentar essa parte quando o Cloud for lançado
-        // handleCloud(qtdModAcessos)
+        handleCloud(qtdModAcessos)
     }
 
 }

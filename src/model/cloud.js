@@ -6,7 +6,7 @@ import { addParagrafoComModulo, montaLink, paragrafoLinkavel } from "../controll
 import { avisoCloud } from "../view/avisoCloud.js"
 
 export function handleCloud(qtdModAcesso) {
-    if (qtdModAcesso >= 2) {
+    if (qtdModAcesso > 0) {
         avisoCloud()
         const paragrafo = paragrafoLinkavel(`1`, `Licença BRAVAS Cloud`, () => montaLink("", "(PRD00??)"))
         addParagrafoComModulo(paragrafo)
