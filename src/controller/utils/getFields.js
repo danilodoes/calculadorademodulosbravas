@@ -62,4 +62,14 @@ export function getIluminacao() {
     return Number(qtdIluminacao.value)
 }
 
+export function getEstacionamentoEntradas() {
+    const qtdTotensEntrada = document.querySelector('.tfEstacionamentoEntrada')
+    return Number(qtdTotensEntrada.value)
+}
+
+export function getEstacionamentoSaidas() {
+    const qtdTotensSaida = document.querySelector('.tfEstacionamentoSaida')
+    return Number(qtdTotensSaida.value)
+    
+}
 

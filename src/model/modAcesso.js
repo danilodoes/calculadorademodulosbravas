@@ -6,7 +6,7 @@
 import { addParagrafoComModulo, montaLink, paragrafoLinkavel } from "../controller/feedbackData.js"
 import { handleCloud } from "./cloud.js"
 
-export function calcModAcesso(qtdPortas, qtdCatracas, qtdVeiculos, qtdVeiculosRF, qtdAcessosAntiCarona, qtdAudio, qtdControleVagasEntrada, qtdControleVagasSaida, qtdElevadores, qtdAndares, qtdSensorNivel, qtdIluminacao) {
+export function calcModAcesso(qtdPortas, qtdCatracas, qtdVeiculos, qtdVeiculosRF, qtdAcessosAntiCarona, qtdAudio, qtdControleVagasEntrada, qtdControleVagasSaida, qtdElevadores, qtdAndares, qtdSensorNivel, qtdIluminacao, qtdTotensEntrada, qtdTotensSaida) {
 
     //? PGM ELEVADOR
     const qtdPGMElevador = Math.ceil(Number(qtdAndares * qtdElevadores) / 10)
@@ -29,15 +29,21 @@ export function calcModAcesso(qtdPortas, qtdCatracas, qtdVeiculos, qtdVeiculosRF
     const qtdModPorta = (qtdPortas + qtdVeiculos - qtdModRF)
     const qtdTotalAcessos = (qtdModRF + qtdModCatraca + qtdModPorta)
 
+    //? Quantidade total de totens para escionamento autônomo
+
+
     //? Quantidade total de módulos acessos
-    const qtdModAcessos = Math.ceil((qtdTotalPGM + qtdTotalAcessos) / 40)
+    const qtdModAcessos = Math.ceil((qtdTotalPGM + qtdTotalAcessos + qtdTotensEntrada + qtdTotensSaida) / 40)
+
+    console.log(qtdModAcessos)
+
 
     if (qtdModAcessos > 0) {
         const paragrafo = paragrafoLinkavel(`${qtdModAcessos}`, `Módulo Acesso Programável`, () => montaLink("https://bravas.ind.br/Produtos/32/PRD0028-Modulo-Acesso-Programavel", "(PRD0028)"))
         addParagrafoComModulo(paragrafo)
 
         //TODO: Chama o aviso de Cloud caso a quantidade de módulo acesso seja maior que dois! Descomentar essa parte quando o Cloud for lançado
-        handleCloud(qtdModAcessos)
+        //handleCloud()
     }
 
 }

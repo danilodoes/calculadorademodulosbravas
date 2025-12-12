@@ -34,6 +34,10 @@
                     <button class="nav-link" id="nav-automacao-tab" data-bs-toggle="tab" data-bs-target="#nav-automacao"
                         type="button" role="tab" aria-controls="nav-automacao" aria-selected="false">Automações</button>
 
+                    <button class="nav-link" id="nav-estacionamento-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-estacionamento" type="button" role="tab" aria-controls="nav-estacionamento"
+                        aria-selected="false">Gestão de Estacionamento</button>
+
                     <button class="nav-link ms-auto bg-success text-white" id="nav-calcular-tab" data-bs-toggle="tab"
                         data-bs-target="#nav-calcular" type="button" role="tab" aria-controls="nav-calcular"
                         aria-selected="false">CALCULAR</button>
@@ -42,6 +46,7 @@
             </nav>
 
             <div class="tab-content card-body" id="nav-tabContent">
+
                 <!-- ? CONTANT TAB: CONTROLE DE ACESSOS -->
                 <div class="tab-pane fade show active" id="nav-controle" role="tabpanel"
                     aria-labelledby="nav-controle-tab" tabindex="0">
@@ -102,7 +107,7 @@
                             <div id="qtdAcessosVeicularesRF" class="d-none">
                                 <h5 class="card-title my-3 text-center">Quantos?</h5>
                                 <input type="number" min="1" placeholder="Ex.: 2"
-                                    class="tfAcessosVeicularesRF custom-input form-control mx-auto">
+                                    class="tfAcessosVeicularesRF custom-input form-control mx-auto" value="0">
                             </div>
 
                         </div>
@@ -124,6 +129,10 @@
                             <button class="nav-link" id="nav-vagas-tab" data-bs-toggle="tab" data-bs-target="#nav-vagas"
                                 type="button" role="tab" aria-controls="nav-vagas" aria-selected="false">Controle de
                                 Vagas</button>
+
+                            <button class="nav-link" id="nav-display-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-display" type="button" role="tab" aria-controls="nav-display"
+                                aria-selected="false">Display Led IP</button>
 
                             <button class="nav-link" id="nav-elevadores-tab" data-bs-toggle="tab"
                                 data-bs-target="#nav-elevadores" type="button" role="tab" aria-controls="nav-elevadores"
@@ -172,6 +181,15 @@
                             </div>
                         </div>
 
+                        <div class="tab-pane fade" id="nav-display" role="tabpanel" aria-labelledby="nav-display-tab"
+                            tabindex="0">
+                            <div class="containerDisplay custom-container">
+                                <h5 class="card-title">Quantos displays em led você quer controlar?</h5>
+                                <input type="number" min="1" placeholder="Ex.: 3"
+                                    class="tfDisplay custom-input form-control mx-auto" value="0">
+                            </div>
+                        </div>
+
                         <div class="tab-pane fade" id="nav-elevadores" role="tabpanel"
                             aria-labelledby="nav-elevadores-tab" tabindex="0">
 
@@ -207,6 +225,44 @@
                     </div>
 
 
+                </div>
+
+                <!-- ? CONTENT TAB: Estacionamento -->
+                <div class="tab-pane fade" id="nav-estacionamento" role="tabpanel"
+                    aria-labelledby="nav-estacionamento-tab" tabindex="0">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-entrada-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-entrada" type="button" role="tab" aria-controls="nav-entrada"
+                                aria-selected="false">Entrada</button>
+
+                            <button class="nav-link" id="nav-saida-tab" data-bs-toggle="tab" data-bs-target="#nav-saida"
+                                type="button" role="tab" aria-controls="nav-saida" aria-selected="false">Saída</button>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content d-flex justify-content-center" id="nav-tabContent">
+
+                        <div class="tab-pane fade show active" id="nav-entrada" role="tabpanel"
+                            aria-labelledby="nav-entrada-tab" tabindex="0">
+                            <div class="custom-container">
+                                <h5 class="card-title my-3 text-center">Quantos totens para controle de entrada?</h5>
+                                <input type="number" min="1" placeholder="Ex.: 4"
+                                    class="tfEstacionamentoEntrada custom-input form-control mx-auto" value="0">
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-saida" role="tabpanel" aria-labelledby="nav-saida-tab"
+                            tabindex="0">
+
+                            <div class="custom-container">
+                                <h5 class="card-title my-3 text-center">Quantos totens para controle de saída?</h5>
+                                <input type="number" min="1" placeholder="Ex.: 2"
+                                    class="tfEstacionamentoSaida custom-input form-control mx-auto" value="0">
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
                 <!-- ? CONTANT TAB: CALCULAR -->
@@ -304,8 +360,6 @@
 
     <!-- ? SCRIPT: Biblioteca para fazer o PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-
 
 </body>
 

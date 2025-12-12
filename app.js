@@ -1,7 +1,8 @@
 import { addParagrafoComResposta } from "./src/controller/feedbackData.js"
-import { getPortas, getCatracas, getVeiculos, getVeiculosRF, getAntiCarona, getAudio, getControleVagasEntrada, getControleVagasSaida, getElevadores, getAndares, getSensorNivel, getIluminacao } from "./src/controller/utils/getFields.js"
+import { getPortas, getCatracas, getVeiculos, getVeiculosRF, getAntiCarona, getAudio, getControleVagasEntrada, getControleVagasSaida, getElevadores, getAndares, getSensorNivel, getIluminacao, getEstacionamentoEntradas, getEstacionamentoSaidas } from "./src/controller/utils/getFields.js"
 import { calcAudio } from "./src/model/audio.js"
 import { calcCatracaIP } from "./src/model/catraca.js"
+import { calcEstacionamentoAutonomo } from "./src/model/estacionamento.js"
 import { calcModAcesso } from "./src/model/modAcesso.js"
 import { calcElevadorIP } from "./src/model/pgmElev.js"
 import { calcPGM } from "./src/model/pgms.js"
@@ -27,6 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const qtdAndares = getAndares()
     const qtdSensorNivel = getSensorNivel()
     const qtdIluminacao = getIluminacao()
+    const qtdTotensEntrada = getEstacionamentoEntradas()
+    const qtdTotensSaida = getEstacionamentoSaidas()
+
+
 
     // * Calcula e mostra a quantidade de: Módulos Áudio IP
     calcAudio(qtdAudio)
@@ -46,8 +51,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // * Calcula e mostra a quantidade de: Módulos Elevador IP
     calcElevadorIP(qtdElevadores, qtdAndares)
 
+    // * Calcula e mostra a quantidade de: Totens para estacionamento autonônomo
+    calcEstacionamentoAutonomo(qtdTotensEntrada, qtdTotensSaida)
+
     // * Calcula e mostra a quantidade de: Módulos Acesso Programável
-    calcModAcesso(qtdPortas, qtdCatracas, qtdVeiculos, qtdVeiculosRF, qtdAcessosAntiCarona, qtdAudio, qtdControleVagasEntrada, qtdControleVagasSaida, qtdElevadores, qtdAndares, qtdSensorNivel, qtdIluminacao)
+    calcModAcesso(qtdPortas, qtdCatracas, qtdVeiculos, qtdVeiculosRF, qtdAcessosAntiCarona, qtdAudio, qtdControleVagasEntrada, qtdControleVagasSaida, qtdElevadores, qtdAndares, qtdSensorNivel, qtdIluminacao, qtdTotensEntrada, qtdTotensSaida)
 
 
     // * Funções para montar o PDF com todos os inputs do usuário. 
