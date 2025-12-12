@@ -6,7 +6,7 @@
 import { addParagrafoComModulo, montaLink, paragrafoLinkavel } from "../controller/feedbackData.js"
 import { handleCloud } from "./cloud.js"
 
-export function calcModAcesso(qtdPortas, qtdCatracas, qtdVeiculos, qtdVeiculosRF, qtdAcessosAntiCarona, qtdAudio, qtdControleVagasEntrada, qtdControleVagasSaida, qtdElevadores, qtdAndares, qtdSensorNivel, qtdIluminacao, qtdTotensEntrada, qtdTotensSaida) {
+export function calcModAcesso(qtdPortas, qtdCatracas, qtdVeiculos, qtdVeiculosRF, qtdAcessosAntiCarona, qtdAudio, qtdControleVagasEntrada, qtdControleVagasSaida, qtdElevadores, qtdAndares, qtdSensorNivel, qtdIluminacao, qtdTotensEntrada, qtdTotensSaida, qtdDisplay) {
 
     //? PGM ELEVADOR
     const qtdPGMElevador = Math.ceil(Number(qtdAndares * qtdElevadores) / 10)
@@ -29,11 +29,11 @@ export function calcModAcesso(qtdPortas, qtdCatracas, qtdVeiculos, qtdVeiculosRF
     const qtdModPorta = (qtdPortas + qtdVeiculos - qtdModRF)
     const qtdTotalAcessos = (qtdModRF + qtdModCatraca + qtdModPorta)
 
-    //? Quantidade total de totens para escionamento autônomo
+   
 
 
     //? Quantidade total de módulos acessos
-    const qtdModAcessos = Math.ceil((qtdTotalPGM + qtdTotalAcessos + qtdTotensEntrada + qtdTotensSaida) / 40)
+    const qtdModAcessos = Math.ceil((qtdTotalPGM + qtdTotalAcessos + qtdTotensEntrada + qtdTotensSaida + qtdDisplay) / 40)
 
     console.log(qtdModAcessos)
 

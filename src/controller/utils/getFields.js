@@ -62,6 +62,11 @@ export function getIluminacao() {
     return Number(qtdIluminacao.value)
 }
 
+export function getDisplay() {
+    const qtdDisplay = document.querySelector('.tfDisplay')
+    return Number(qtdDisplay.value)
+}
+
 export function getEstacionamentoEntradas() {
     const qtdTotensEntrada = document.querySelector('.tfEstacionamentoEntrada')
     return Number(qtdTotensEntrada.value)
