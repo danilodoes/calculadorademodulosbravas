@@ -20,7 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 `<p>Se você tem uma necessidade específica ou pensou em uma automação que não encontrou na lista, fale com a gente!</p>`,
                 `<p>👨🏻‍💻 Nosso time de suporte está à disposição para entender a sua demanda e te ajudar a colocar a solução ideal em prática.</p>`,
                 `<p>${message}</p>`,
-                '   <button type="button" class="btn btn-success btnVoltar" data-bs-dismiss="alert" aria-label="Close">Voltar</button>',
+                `<div class="d-flex justify-content-evenly">
+                    <button type="button" class="btn btn-success btnVoltar" data-bs-dismiss="alert" aria-label="Close">Voltar</button>
+                    <button type="button" class="btn btn-warning btnReset">Limpar Respostas</button>
+                </div>`,
+
                 '</div>'
             ].join('')
 

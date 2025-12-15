@@ -10,6 +10,7 @@ import { calcPGM } from "./src/model/pgms.js"
 import { calcPortaIP } from "./src/model/porta.js"
 import { calcRFIP } from "./src/model/rf.js"
 
+
 document.addEventListener("DOMContentLoaded", function () {
 
   // Botão Calcular
@@ -32,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const qtdTotensEntrada = getEstacionamentoEntradas()
     const qtdTotensSaida = getEstacionamentoSaidas()
     const qtdDisplay = getDisplay()
-
 
 
     // * Calcula e mostra a quantidade de: Módulos Áudio IP
@@ -80,5 +80,14 @@ document.addEventListener("DOMContentLoaded", function () {
     addParagrafoComResposta(`Quantidade de andares: ${qtdAndares}`)
     addParagrafoComResposta(`Quantidade de sensores de nível: ${qtdSensorNivel}`)
     addParagrafoComResposta(`Quantidade de circuitos para iluminação: ${qtdIluminacao}`)
+    addParagrafoComResposta(`Quantidade de display led: ${qtdDisplay}`)
+
+    //? Gestão de Estacionamento
+    addParagrafoComResposta(`Quantidade de totens de entrada: ${qtdTotensEntrada}`)
+    addParagrafoComResposta(`Quantidade de totens de saída: ${qtdTotensSaida}`)
+
+    const reset = document.querySelector('.btnReset')
+    reset.addEventListener('click', () => { location.reload() })
   })
+
 })

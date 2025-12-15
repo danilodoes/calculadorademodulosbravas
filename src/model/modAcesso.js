@@ -29,14 +29,9 @@ export function calcModAcesso(qtdPortas, qtdCatracas, qtdVeiculos, qtdVeiculosRF
     const qtdModPorta = (qtdPortas + qtdVeiculos - qtdModRF)
     const qtdTotalAcessos = (qtdModRF + qtdModCatraca + qtdModPorta)
 
-   
-
 
     //? Quantidade total de módulos acessos
     const qtdModAcessos = Math.ceil((qtdTotalPGM + qtdTotalAcessos + qtdTotensEntrada + qtdTotensSaida + qtdDisplay) / 40)
-
-    console.log(qtdModAcessos)
-
 
     if (qtdModAcessos > 0) {
         const paragrafo = paragrafoLinkavel(`${qtdModAcessos}`, `Módulo Acesso Programável`, () => montaLink("https://bravas.ind.br/Produtos/32/PRD0028-Modulo-Acesso-Programavel", "(PRD0028)"))
