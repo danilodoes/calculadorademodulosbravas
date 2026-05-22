@@ -6,359 +6,276 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BRAVAS - Calculadora de Módulos</title>
     <link rel="stylesheet" href="./style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="shortcut icon"
-        href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbFjhYAK53K3U5xd3GzeUDVnCykDx8DfjsEg&s"
-        type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbFjhYAK53K3U5xd3GzeUDVnCykDx8DfjsEg&s" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body class="custom-body">
 
-    <div class="card custom-card">
-        <div class="card-header text-center mb-3">
-            <h5 class="custom-name">BRAVAS</h5>
-            <span class="card-text">Calculadora de Módulos</span>
-        </div>
-        <!-- ? Alerta -->
+    <div class="app-wrapper">
+        <header class="text-center mb-4 position-relative">
+            <h1 class="custom-name">BRAVAS</h1>
+            <span class="sub-brand">Calculadora de Módulos</span>
+        </header>
+
         <div id="liveAlertPlaceholder"></div>
 
-        <!-- ? Calculadora -->
-        <div class="px-2 calcContent">
-            <nav>
-                <div class="nav nav-tabs d-flex" id="nav-tab" role="tablist">
-                    <button class="nav-link active" id="nav-controle-tab" data-bs-toggle="tab"
-                        data-bs-target="#nav-controle" type="button" role="tab" aria-controls="nav-controle"
-                        aria-selected="true">Controle de Acesso</button>
+        <div class="glass-card calcContent">
+            <nav class="main-nav">
+                <div class="nav nav-pills d-flex justify-content-between" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-controle-tab" data-bs-toggle="tab" data-bs-target="#nav-controle" type="button" role="tab" aria-controls="nav-controle" aria-selected="true">
+                        <i class="bi bi-shield-lock-fill me-2"></i>Controle de Acesso
+                    </button>
 
-                    <button class="nav-link" id="nav-automacao-tab" data-bs-toggle="tab" data-bs-target="#nav-automacao"
-                        type="button" role="tab" aria-controls="nav-automacao" aria-selected="false">Automações</button>
+                    <button class="nav-link" id="nav-automacao-tab" data-bs-toggle="tab" data-bs-target="#nav-automacao" type="button" role="tab" aria-controls="nav-automacao" aria-selected="false">
+                        <i class="bi bi-cpu-fill me-2"></i>Automações
+                    </button>
 
-                    <button class="nav-link" id="nav-estacionamento-tab" data-bs-toggle="tab"
-                        data-bs-target="#nav-estacionamento" type="button" role="tab" aria-controls="nav-estacionamento"
-                        aria-selected="false">Gestão de Estacionamento</button>
+                    <button class="nav-link" id="nav-estacionamento-tab" data-bs-toggle="tab" data-bs-target="#nav-estacionamento" type="button" role="tab" aria-controls="nav-estacionamento" aria-selected="false">
+                        <i class="bi bi-car-front-fill me-2"></i>Gestão de Estacionamento
+                    </button>
 
-                    <button class="nav-link ms-auto bg-success text-white" id="nav-calcular-tab" data-bs-toggle="tab"
-                        data-bs-target="#nav-calcular" type="button" role="tab" aria-controls="nav-calcular"
-                        aria-selected="false">CALCULAR</button>
-
+                    <button class="nav-link btn-calc-trigger" id="nav-calcular-tab" data-bs-toggle="tab" data-bs-target="#nav-calcular" type="button" role="tab" aria-controls="nav-calcular" aria-selected="false">
+                        <i class="bi bi-calculator-fill me-2"></i>PRÓXIMO
+                    </button>
                 </div>
             </nav>
 
-            <div class="tab-content card-body" id="nav-tabContent">
+            <div class="tab-content mt-4" id="nav-tabContent">
 
-                <!-- ? CONTANT TAB: CONTROLE DE ACESSOS -->
-                <div class="tab-pane fade show active" id="nav-controle" role="tabpanel"
-                    aria-labelledby="nav-controle-tab" tabindex="0">
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link active" id="nav-pedestres-tab" data-bs-toggle="tab"
-                                data-bs-target="#nav-pedestres" type="button" role="tab" aria-controls="nav-pedestres"
-                                aria-selected="false">Pedestres</button>
-
-                            <button class="nav-link" id="nav-veiculos-tab" data-bs-toggle="tab"
-                                data-bs-target="#nav-veiculos" type="button" role="tab" aria-controls="nav-veiculos"
-                                aria-selected="false">Veículos</button>
+                <div class="tab-pane fade show active" id="nav-controle" role="tabpanel" aria-labelledby="nav-controle-tab" tabindex="0">
+                    <nav class="sub-nav mb-4">
+                        <div class="nav nav-tabs justify-content-center" id="nav-tab-sub-acesso" role="tablist">
+                            <button class="nav-link active" id="nav-pedestres-tab" data-bs-toggle="tab" data-bs-target="#nav-pedestres" type="button" role="tab">
+                                <i class="bi bi-person-walking me-2"></i>Pedestres
+                            </button>
+                            <button class="nav-link" id="nav-veiculos-tab" data-bs-toggle="tab" data-bs-target="#nav-veiculos" type="button" role="tab">
+                                <i class="bi bi-car-front me-2"></i>Veículos
+                            </button>
                         </div>
                     </nav>
 
-                    <div class="tab-content d-flex justify-content-center" id="nav-tabContent">
-
-                        <div class="tab-pane fade show active" id="nav-pedestres" role="tabpanel"
-                            aria-labelledby="nav-pedestres-tab" tabindex="0">
-                            <div class="custom-container">
-                                <h5 class="card-title">Quantas portas você quer controlar?</h5>
-                                <p>(Não considere acessos veiculares)</p>
-                                <input type="number" min="1" placeholder="Ex.: 10"
-                                    class="tfPedestres custom-input form-control mx-auto mb-3" value="0">
-
-                                <h5 class="card-title">Quantas catracas e/ou torniquetes você quer controlar?</h5>
-                                <input type="number" min="1" placeholder="Ex.: 10"
-                                    class="tfCatracas custom-input form-control mx-auto" value="0">
+                    <div class="tab-content d-flex justify-content-center" id="nav-sub-content-acesso">
+                        
+                        <div class="tab-pane fade show active w-100" id="nav-pedestres" role="tabpanel" tabindex="0">
+                            <div class="custom-container d-flex justify-content-center gap-4 flex-wrap">
+                                <div class="form-group-custom flex-fill text-center d-flex flex-column align-items-center justify-content-center">
+                                    <h5 class="card-title">Quantas portas você quer controlar?</h5>
+                                    <p class="helper-text">(Não considere acessos veiculares)</p>
+                                    <input type="number" min="0" placeholder="Ex.: 10" class="tfPedestres custom-input form-control-modern mt-auto" value="0">
+                                </div>
+                                <div class="form-group-custom flex-fill text-center d-flex flex-column align-items-center justify-content-center">
+                                    <h5 class="card-title">Quantas catracas e/ou torniquetes você quer controlar?</h5>
+                                    <input type="number" min="0" placeholder="Ex.: 10" class="tfCatracas custom-input form-control-modern mt-auto" value="0">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="nav-veiculos" role="tabpanel" aria-labelledby="nav-veiculos-tab"
-                            tabindex="0">
+                        <div class="tab-pane fade w-100" id="nav-veiculos" role="tabpanel" tabindex="0">
+                            <div class="custom-container d-flex justify-content-center gap-4 flex-wrap">
+                                <div class="form-group-custom flex-fill text-center d-flex flex-column align-items-center justify-content-center">
+                                    <h5 class="card-title">Quantos acessos você quer controlar?</h5>
+                                    <p class="helper-text">(Apenas Portões ou Cancelas)</p>
+                                    <input type="number" min="0" placeholder="Ex.: 10" class="tfVeiculos custom-input form-control-modern mt-auto" value="0">
+                                </div>
 
-                            <div class="custom-container">
-                                <h5 class="card-title">Quantos acessos você quer controlar?</h5>
-                                <p>(Apenas Portões ou Cancelas)</p>
-                                <input type="number" min="1" placeholder="Ex.: 10"
-                                    class="tfVeiculos custom-input form-control mx-auto" value="0">
-                                <h5 class="card-title my-3"> Algum desses acessos será acionado via controle remoto?
-                                </h5>
-                                <div class="d-flex gap-5 justify-content-center">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="rd_checkControleRemoto"
-                                            id="rd_controleRemotoSim" value="true">
-                                        <label class="form-check-label" for="rd_controleRemotoSim">
-                                            Sim
-                                        </label>
+                                <div class="form-group-custom flex-fill text-center d-flex flex-column align-items-center justify-content-center">
+                                    <h5 class="card-title mb-4">Algum desses acessos será acionado via controle remoto?</h5>
+                                    <div class="d-flex gap-5 justify-content-center w-100 mb-3">
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="rd_checkControleRemoto" id="rd_controleRemotoSim" value="true">
+                                            <label class="form-check-label" for="rd_controleRemotoSim">Sim</label>
+                                        </div>
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="rd_checkControleRemoto" id="rd_controleRemotoNao" value="false" checked>
+                                            <label class="form-check-label" for="rd_controleRemotoNao">Não</label>
+                                        </div>
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="rd_checkControleRemoto"
-                                            id="rd_controleRemotoNao" value="false" checked>
-                                        <label class="form-check-label" for="rd_controleRemotoNao"> Não </label>
+
+                                    <div id="qtdAcessosVeicularesRF" class="d-none w-100 mt-2 border-top pt-3 border-secondary">
+                                        <h5 class="card-title mb-2 text-center fs-6">Quantos acessos RF?</h5>
+                                        <input type="number" min="0" placeholder="Ex.: 2" class="tfAcessosVeicularesRF custom-input form-control-modern mx-auto" value="0">
                                     </div>
                                 </div>
                             </div>
-
-                            <div id="qtdAcessosVeicularesRF" class="d-none">
-                                <h5 class="card-title my-3 text-center">Quantos?</h5>
-                                <input type="number" min="1" placeholder="Ex.: 2"
-                                    class="tfAcessosVeicularesRF custom-input form-control mx-auto" value="0">
-                            </div>
-
                         </div>
                     </div>
                 </div>
 
-                <!-- ? CONTENT TAB: AUTOMAÇÕES -->
-                <div class="tab-pane fade" id="nav-automacao" role="tabpanel" aria-labelledby="nav-automacao-tab"
-                    tabindex="0">
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link active show" id="nav-carona-tab" data-bs-toggle="tab"
-                                data-bs-target="#nav-carona" type="button" role="tab" aria-controls="nav-carona"
-                                aria-selected="false">Anti-Carona</button>
-
-                            <button class="nav-link" id="nav-audio-tab" data-bs-toggle="tab" data-bs-target="#nav-audio"
-                                type="button" role="tab" aria-controls="nav-audio" aria-selected="false">Áudio</button>
-
-                            <button class="nav-link" id="nav-vagas-tab" data-bs-toggle="tab" data-bs-target="#nav-vagas"
-                                type="button" role="tab" aria-controls="nav-vagas" aria-selected="false">Controle de
-                                Vagas</button>
-
-                            <button class="nav-link" id="nav-display-tab" data-bs-toggle="tab"
-                                data-bs-target="#nav-display" type="button" role="tab" aria-controls="nav-display"
-                                aria-selected="false">Display Led IP</button>
-
-                            <button class="nav-link" id="nav-elevadores-tab" data-bs-toggle="tab"
-                                data-bs-target="#nav-elevadores" type="button" role="tab" aria-controls="nav-elevadores"
-                                aria-selected="true">Elevadores</button>
-
-                            <button class="nav-link" id="nav-agua-tab" data-bs-toggle="tab" data-bs-target="#nav-agua"
-                                type="button" role="tab" aria-controls="nav-agua" aria-selected="false">Nível de
-                                Água</button>
-
-                            <button class="nav-link" id="nav-iluminacao-tab" data-bs-toggle="tab"
-                                data-bs-target="#nav-iluminacao" type="button" role="tab" aria-controls="nav-iluminacao"
-                                aria-selected="false">Iluminação</button>
+                <div class="tab-pane fade" id="nav-automacao" role="tabpanel" aria-labelledby="nav-automacao-tab" tabindex="0">
+                    <nav class="sub-nav mb-4">
+                        <div class="nav nav-tabs justify-content-center flex-wrap" id="nav-tab-sub-auto" role="tablist">
+                            <button class="nav-link active" id="nav-carona-tab" data-bs-toggle="tab" data-bs-target="#nav-carona" type="button" role="tab">
+                                <i class="bi bi-sign-stop me-2"></i>Anti-Carona
+                            </button>
+                            <button class="nav-link" id="nav-audio-tab" data-bs-toggle="tab" data-bs-target="#nav-audio" type="button" role="tab">
+                                <i class="bi bi-volume-up-fill me-2"></i>Áudio
+                            </button>
+                            <button class="nav-link" id="nav-vagas-tab" data-bs-toggle="tab" data-bs-target="#nav-vagas" type="button" role="tab">
+                                <i class="bi bi-p-circle me-2"></i>Controle de Vagas
+                            </button>
+                            <button class="nav-link" id="nav-display-tab" data-bs-toggle="tab" data-bs-target="#nav-display" type="button" role="tab">
+                                <i class="bi bi-tv me-2"></i>Display Led
+                            </button>
+                            <button class="nav-link" id="nav-elevadores-tab" data-bs-toggle="tab" data-bs-target="#nav-elevadores" type="button" role="tab">
+                                <i class="bi bi-building-up me-2"></i>Elevadores
+                            </button>
+                            <button class="nav-link" id="nav-agua-tab" data-bs-toggle="tab" data-bs-target="#nav-agua" type="button" role="tab">
+                                <i class="bi bi-droplet me-2"></i>Nível de Água
+                            </button>
+                            <button class="nav-link" id="nav-iluminacao-tab" data-bs-toggle="tab" data-bs-target="#nav-iluminacao" type="button" role="tab">
+                                <i class="bi bi-lightbulb me-2"></i>Iluminação
+                            </button>
                         </div>
                     </nav>
 
-                    <div class="tab-content d-flex justify-content-center" id="nav-tabContent">
-                        <div class="tab-pane fade active show" id="nav-carona" role="tabpanel"
-                            aria-labelledby="nav-carona-tab" tabindex="0">
-                            <div class="containerAudio custom-container">
-                                <h5 class="card-title">Quantos portões com anti-carona?</h5>
-                                <input type="number" min="1" placeholder="Ex.: 2"
-                                    class="tfAcessosAntiCarona custom-input form-control mx-auto" value="0">
-                            </div>
-
-                        </div>
-
-                        <div class="tab-pane fade" id="nav-audio" role="tabpanel" aria-labelledby="nav-audio-tab"
-                            tabindex="0">
-                            <div class="containerAudio custom-container">
-                                <h5 class="card-title">Quantas saídas de áudio?</h5>
-                                <input type="number" min="1" placeholder="Ex.: 3"
-                                    class="tfAudio custom-input form-control mx-auto" value="0">
+                    <div class="tab-content d-flex justify-content-center" id="nav-sub-content-auto">
+                        <div class="tab-pane fade show active w-100" id="nav-carona" role="tabpanel" tabindex="0">
+                            <div class="custom-container d-flex justify-content-center">
+                                <div class="form-group-custom text-center" style="max-width: 400px; width: 100%;">
+                                    <h5 class="card-title">Quantos portões com anti-carona?</h5>
+                                    <input type="number" min="0" placeholder="Ex.: 2" class="tfAcessosAntiCarona custom-input form-control-modern mx-auto mt-3" value="0">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="nav-vagas" role="tabpanel" aria-labelledby="nav-vagas-tab"
-                            tabindex="0">
-                            <div class="containerControleVagas custom-container">
-                                <h5 class="card-title">Quantos acessos de entrada?</h5>
-                                <input type="number" min="1" placeholder="Ex.: 1"
-                                    class="tfControleVagasEntrada custom-input form-control mx-auto mb-3" value="0">
-
-                                <h5 class="card-title">Quantos acessos de saída?</h5>
-                                <input type="number" min="1" placeholder="Ex.: 1"
-                                    class="tfControleVagasSaida custom-input form-control mx-auto" value="0">
+                        <div class="tab-pane fade w-100" id="nav-audio" role="tabpanel" tabindex="0">
+                            <div class="custom-container d-flex justify-content-center">
+                                <div class="form-group-custom text-center" style="max-width: 400px; width: 100%;">
+                                    <h5 class="card-title">Quantas saídas de áudio?</h5>
+                                    <input type="number" min="0" placeholder="Ex.: 3" class="tfAudio custom-input form-control-modern mx-auto mt-3" value="0">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="nav-display" role="tabpanel" aria-labelledby="nav-display-tab"
-                            tabindex="0">
-                            <div class="containerDisplay custom-container">
-                                <h5 class="card-title">Quantos displays em led você quer controlar?</h5>
-                                <input type="number" min="1" placeholder="Ex.: 3"
-                                    class="tfDisplay custom-input form-control mx-auto" value="0">
+                        <div class="tab-pane fade w-100" id="nav-vagas" role="tabpanel" tabindex="0">
+                            <div class="custom-container d-flex justify-content-center gap-4 flex-wrap">
+                                <div class="form-group-custom flex-fill text-center">
+                                    <h5 class="card-title">Quantos acessos de entrada?</h5>
+                                    <input type="number" min="0" placeholder="Ex.: 1" class="tfControleVagasEntrada custom-input form-control-modern mx-auto mt-3" value="0">
+                                </div>
+                                <div class="form-group-custom flex-fill text-center">
+                                    <h5 class="card-title">Quantos acessos de saída?</h5>
+                                    <input type="number" min="0" placeholder="Ex.: 1" class="tfControleVagasSaida custom-input form-control-modern mx-auto mt-3" value="0">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="nav-elevadores" role="tabpanel"
-                            aria-labelledby="nav-elevadores-tab" tabindex="0">
-
-                            <div class="containerElevadores custom-container">
-                                <h5 class="card-title">Quantos elevadores?</h5>
-                                <input type="number" min="1" placeholder="Ex.: 5"
-                                    class="tfElevadores custom-input form-control mx-auto mb-2" value="0">
-
-                                <h5 class="card-title">Quantos andares em cada elevador?</h5>
-                                <input type="number" min="1" placeholder="Ex.: 18"
-                                    class="tfAndares custom-input form-control  mx-auto" value="0">
-                            </div>
-
-                        </div>
-
-                        <div class="tab-pane fade" id="nav-agua" role="tabpanel" aria-labelledby="nav-agua-tab"
-                            tabindex="0">
-                            <div class="containerSensores custom-container">
-                                <h5 class="card-title">Quantos sensores de nível?</h5>
-                                <input type="number" min="1" placeholder="Ex.: 2"
-                                    class="tfSensores custom-input form-control mx-auto" value="0">
+                        <div class="tab-pane fade w-100" id="nav-display" role="tabpanel" tabindex="0">
+                            <div class="custom-container d-flex justify-content-center">
+                                <div class="form-group-custom text-center" style="max-width: 400px; width: 100%;">
+                                    <h5 class="card-title">Quantos displays em led você quer controlar?</h5>
+                                    <input type="number" min="0" placeholder="Ex.: 3" class="tfDisplay custom-input form-control-modern mx-auto mt-3" value="0">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="nav-iluminacao" role="tabpanel"
-                            aria-labelledby="nav-iluminacao-tab" tabindex="0">
-                            <div class="containerIluminacao custom-container">
-                                <h5 class="card-title">Quantos circuitos você quer automatizar?</h5>
-                                <input type="number" min="1" placeholder="Ex.: 15"
-                                    class="tfIluminacao custom-input form-control mx-auto" value="0">
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <!-- ? CONTENT TAB: Estacionamento -->
-                <div class="tab-pane fade" id="nav-estacionamento" role="tabpanel"
-                    aria-labelledby="nav-estacionamento-tab" tabindex="0">
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link active" id="nav-entrada-tab" data-bs-toggle="tab"
-                                data-bs-target="#nav-entrada" type="button" role="tab" aria-controls="nav-entrada"
-                                aria-selected="false">Entrada</button>
-
-                            <button class="nav-link" id="nav-saida-tab" data-bs-toggle="tab" data-bs-target="#nav-saida"
-                                type="button" role="tab" aria-controls="nav-saida" aria-selected="false">Saída</button>
-                        </div>
-                    </nav>
-
-                    <div class="tab-content d-flex justify-content-center" id="nav-tabContent">
-
-                        <div class="tab-pane fade show active" id="nav-entrada" role="tabpanel"
-                            aria-labelledby="nav-entrada-tab" tabindex="0">
-                            <div class="custom-container">
-                                <h5 class="card-title my-3 text-center">Quantos totens para controle de entrada?</h5>
-                                <input type="number" min="1" placeholder="Ex.: 4"
-                                    class="tfEstacionamentoEntrada custom-input form-control mx-auto" value="0">
+                        <div class="tab-pane fade w-100" id="nav-elevadores" role="tabpanel" tabindex="0">
+                            <div class="custom-container d-flex justify-content-center gap-4 flex-wrap">
+                                <div class="form-group-custom flex-fill text-center">
+                                    <h5 class="card-title">Quantos elevadores?</h5>
+                                    <input type="number" min="0" placeholder="Ex.: 5" class="tfElevadores custom-input form-control-modern mx-auto mt-3" value="0">
+                                </div>
+                                <div class="form-group-custom flex-fill text-center">
+                                    <h5 class="card-title">Quantos andares em cada elevador?</h5>
+                                    <input type="number" min="0" placeholder="Ex.: 18" class="tfAndares custom-input form-control-modern mx-auto mt-3" value="0">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="nav-saida" role="tabpanel" aria-labelledby="nav-saida-tab"
-                            tabindex="0">
-
-                            <div class="custom-container">
-                                <h5 class="card-title my-3 text-center">Quantos totens para controle de saída?</h5>
-                                <input type="number" min="1" placeholder="Ex.: 2"
-                                    class="tfEstacionamentoSaida custom-input form-control mx-auto" value="0">
+                        <div class="tab-pane fade w-100" id="nav-agua" role="tabpanel" tabindex="0">
+                            <div class="custom-container d-flex justify-content-center">
+                                <div class="form-group-custom text-center" style="max-width: 400px; width: 100%;">
+                                    <h5 class="card-title">Quantos sensores de nível?</h5>
+                                    <input type="number" min="0" placeholder="Ex.: 2" class="tfSensores custom-input form-control-modern mx-auto mt-3" value="0">
+                                </div>
                             </div>
+                        </div>
 
+                        <div class="tab-pane fade w-100" id="nav-iluminacao" role="tabpanel" tabindex="0">
+                            <div class="custom-container d-flex justify-content-center">
+                                <div class="form-group-custom text-center" style="max-width: 400px; width: 100%;">
+                                    <h5 class="card-title">Quantos circuitos você quer automatizar?</h5>
+                                    <input type="number" min="0" placeholder="Ex.: 15" class="tfIluminacao custom-input form-control-modern mx-auto mt-3" value="0">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- ? CONTANT TAB: CALCULAR -->
-                <div class="tab-pane fade" id="nav-calcular" role="tabpanel" aria-labelledby="nav-calcular-tab"
-                    tabindex="0">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <p class="card-text"><span class="fw-bold">Aviso Importante:</span>
-                                Esta ferramenta visa auxiliar na especificação do seu projeto. </p>
-                            <p>Embora os módulos apresentados
-                                sejam uma referência útil, recomendamos a validação do seu projeto com nossa equipe
-                                de
-                                suporte para garantir a melhor adequação às suas necessidades.</p>
+                <div class="tab-pane fade" id="nav-estacionamento" role="tabpanel" aria-labelledby="nav-estacionamento-tab" tabindex="0">
+                    <div class="custom-container d-flex justify-content-center mt-3">
+                        <div class="form-group-custom unified-card d-flex align-items-stretch justify-content-center w-100">
+                            <div class="side-panel text-center flex-fill p-4">
+                                <i class="bi bi-box-arrow-in-right display-4 mb-3 d-block text-success"></i>
+                                <h5 class="card-title">Quantos totens para controle de entrada?</h5>
+                                <input type="number" min="0" placeholder="Ex.: 4" class="tfEstacionamentoEntrada custom-input form-control-modern mx-auto mt-3" value="0">
+                            </div>
+                            
+                            <div class="vertical-divider"></div>
+                            
+                            <div class="side-panel text-center flex-fill p-4">
+                                <i class="bi bi-box-arrow-right display-4 mb-3 d-block text-danger"></i>
+                                <h5 class="card-title">Quantos totens para controle de saída?</h5>
+                                <input type="number" min="0" placeholder="Ex.: 2" class="tfEstacionamentoSaida custom-input form-control-modern mx-auto mt-3" value="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                            <a target="_blank" class="icon-link icon-link-hover"
-                                style="--bs-link-hover-color-rgb: 25, 135, 84; text-decoration: none;"
-                                href="https://api.whatsapp.com/send/?phone=551129247613&text=Gostaria%20de%20auxílio%20para%20o%20meu%20projeto.&type=phone_number&app_absent=0">
-                                Suporte
-                                <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16"
-                                    aria-hidden="true">
-                                    <path
-                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                                </svg>
+                <div class="tab-pane fade" id="nav-calcular" role="tabpanel" aria-labelledby="nav-calcular-tab" tabindex="0">
+                    <div class="finish-screen text-center custom-container">
+                        <div class="info-box mb-5 mx-auto">
+                            <h6 class="fw-bold mb-3"><i class="bi bi-exclamation-triangle-fill me-2 text-warning"></i>Aviso Importante</h6>
+                            <p class="mb-0">Esta ferramenta visa auxiliar na especificação do seu projeto. Embora os módulos apresentados sejam uma referência útil, recomendamos a validação do seu projeto com nossa equipe de suporte para garantir a melhor adequação às suas necessidades.</p>
+                        </div>
+                        
+                        <div class="d-flex flex-column gap-4 align-items-center">
+                            <button type="button" class="btn-primary-modern calcular" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                GERAR CÁLCULO
+                            </button>
+                            <a target="_blank" class="support-link btn-whatsapp" href="https://api.whatsapp.com/send/?phone=551129247613&text=Gostaria%20de%20auxílio%20para%20o%20meu%20projeto.&type=phone_number&app_absent=0">
+                                <i class="bi bi-whatsapp"></i> Falar com Suporte Técnico
                             </a>
                         </div>
-                        <div class="card-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary calcular" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop">
-                                Calcular</button>
-                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 
-
-
-    <!--? TELA: Modal Resultado -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-3" id="staticBackdropLabel">Total de Módulos</h1>
-
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg result-modal">
+                <div class="modal-header border-0 pb-0 mt-2">
+                    <h1 class="modal-title fs-4 fw-bold"><i class="bi bi-check2-square me-2"></i>Resultado</h1>
                 </div>
-                <div class="modal-body">
-                    <div class="modulosTotais">
-                    </div>
-
-                    <div class="avisoCloud text-center">
-                    </div>
-
+                <div class="modal-body py-4">
+                    <div class="modulos-list modulosTotais"></div>
+                    <div class="cloud-alert avisoCloud mt-3"></div>
                     <div class="d-none">
                         <hr>
-                        <h1 class="modal-title fs-5 mb-2" id="staticBackdropLabel">Suas respostas</h1>
+                        <h1 class="modal-title fs-5 mb-2">Suas respostas</h1>
                         <div class="respotasUsuario"></div>
                     </div>
-
                 </div>
-                <div class="modal-footer">
-
-
-                    <button type="button" class="btn btn-secondary btnFecharModal"
-                        data-bs-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary btnBaixar">Baixar</button>
+                <div class="modal-footer border-0 pt-0 mb-2">
+                    <button type="button" class="btn-modal-close btnFecharModal" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn-modal-download btnBaixar"><i class="bi bi-file-earmark-pdf-fill me-2"></i>Baixar PDF</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ? SCRIPT: Alerta -->
     <script type="module" src="./src/controller/alert.js"></script>
-
-    <!-- ? SCRIPT: AvisoCloud -->
     <script type="module" src="./src/view/avisoCloud.js"></script>
-
-    <!-- ? SCRIPT:  Bootstrap bundle (com JS do carrossel) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
-
-    <!-- ? SCRIPT: A calculadora -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script type="module" src="./app.js"></script>
-
-    <!--? SCRIPT: Fechar modal -->
     <script src="./src/view/modal.js"></script>
-
-    <!-- ? SCRIPT: Controle de estado da página -->
     <script type="module" src="./src/view/radios.js"></script>
-
-    <!-- ? SCRIPT: Download do PDF com os módulos calculados + respostas -->
     <script src="./download.js"></script>
-
-    <!-- ? SCRIPT: Biblioteca para fazer o PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 </body>
