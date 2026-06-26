@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     calcAudio(qtdAudio)
 
     // * Calcula e mostra a quantidade de: Módulos Porta IP
-    calcPortaIP(qtdPortas, qtdVeiculos, qtdVeiculosRF)
+    calcPortaIP(qtdPortas, qtdVeiculos, qtdVeiculosRF, qtdElevadores)
 
     // * Calcula e mostra a quantidade de: Módulos Catraca IP
     calcCatracaIP(qtdCatracas)
